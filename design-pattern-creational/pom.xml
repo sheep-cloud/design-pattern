@@ -1,16 +1,16 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <parent>
-    <groupId>cn.clog</groupId>
-    <artifactId>design-pattern</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
-  </parent>
-  <artifactId>design-pattern-creational</artifactId>
-  <packaging>pom</packaging>
-  <name>创建型模式</name>
-  <description>创建型模式：简单工程模式，工厂方法模式，抽象工厂模式，单例模式，原型模式，建造者模式。共六种。</description>
-  <modules>
-  	<module>SimpleFactory</module>
-  	<module>FactoryMethod</module>
-  </modules>
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>cn.clog</groupId>
+		<artifactId>design-pattern</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+	<artifactId>design-pattern-creational</artifactId>
+	<packaging>pom</packaging>
+	<name>创建型模式</name>
+	<description>创建型模式：简单工程模式，工厂方法模式，抽象工厂模式，单例模式，原型模式，建造者模式</description>
+	<modules>
+		<module>SimpleFactory</module>
+		<module>FactoryMethod</module>
+	</modules>
 </project>
