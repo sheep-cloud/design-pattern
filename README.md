@@ -36,6 +36,6 @@
 尽量首先使用合成/聚合的方式，而不是使用继承。
 
 # 参考文档
-- 设计模式Java版本（[查看设计模式Java版本详细资料](https://gof.quanke.name/)）
+- 设计模式Java版本（[查看设计模式Java版本详细资料](https://gof.quanke.name/) - [github](https://github.com/quanke/design-pattern-java)）
 - 设计模式的三种类型（[设计模式的三种类型](https://blog.csdn.net/cyjch/article/details/51506525)）
 - 23种设计模式汇总整理（[23种设计模式汇总整理](https://blog.csdn.net/jason0539/article/details/44956775)）
