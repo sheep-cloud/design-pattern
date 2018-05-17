@@ -17,21 +17,21 @@ public class Chart {
 	 */
 	public Chart(Object[][] data, String type) {
 		this.type = type;
-		if (type.equalsIgnoreCase("histogram")) {
+		if ("histogram".equalsIgnoreCase(type)) {
 			// 初始化柱状图
-		} else if (type.equalsIgnoreCase("pie")) {
+		} else if ("pie".equalsIgnoreCase(type)) {
 			// 初始化饼状图
-		} else if (type.equalsIgnoreCase("line")) {
+		} else if ("line".equalsIgnoreCase(type)) {
 			// 初始化折线图
 		}
 	}
 
 	public void display() {
-		if (type.equalsIgnoreCase("histogram")) {
+		if ("histogram".equalsIgnoreCase(type)) {
 			// 显示柱状图
-		} else if (type.equalsIgnoreCase("pie")) {
+		} else if ("pie".equalsIgnoreCase(type)) {
 			// 显示饼状图
-		} else if (type.equalsIgnoreCase("line")) {
+		} else if ("line".equalsIgnoreCase(type)) {
 			// 显示折线图
 		}
 	}

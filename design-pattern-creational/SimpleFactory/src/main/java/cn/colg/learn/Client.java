@@ -15,7 +15,7 @@ public class Client {
 		String type = props.getStr("geometryType");
 
 		// 通过工厂方法创建对象
-		Geometry geometry = Geometry.getGeometry(type);
+		AbstractGeometry geometry = AbstractGeometry.getGeometry(type);
 		geometry.dram();
 		geometry.erase();
 	}

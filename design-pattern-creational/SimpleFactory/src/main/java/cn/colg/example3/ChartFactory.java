@@ -15,13 +15,13 @@ public class ChartFactory {
 	 */
 	public static Chart getChart(String type) {
 		Chart chart = null;
-		if (type.equalsIgnoreCase("histogram")) {
+		if ("histogram".equalsIgnoreCase(type)) {
 			chart = new HistogramChart();
 			System.out.println("初始化设置柱状图！");
-		} else if (type.equalsIgnoreCase("pie")) {
+		} else if ("pie".equalsIgnoreCase(type)) {
 			chart = new PieChart();
 			System.out.println("初始化设置饼状图！");
-		} else if (type.equalsIgnoreCase("line")) {
+		} else if ("line".equalsIgnoreCase(type)) {
 			chart = new LineChart();
 			System.out.println("初始化设置折线图！");
 		}

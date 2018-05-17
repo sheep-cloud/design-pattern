@@ -5,7 +5,7 @@ package cn.colg.learn;
  *
  * @author colg
  */
-public class Square extends Geometry {
+public class Square extends AbstractGeometry {
 
 	public Square() {
 		System.out.println("创建方形！");

@@ -15,10 +15,10 @@ public class Factory {
 	 */
 	public static Product getProduct(String arg) {
 		Product product = null;
-		if (arg.equalsIgnoreCase("A")) {
+		if ("A".equalsIgnoreCase(arg)) {
 			product = new ConcrteProductA();
 			// 初始化设置product
-		} else if (arg.equalsIgnoreCase("B")) {
+		} else if ("B".equalsIgnoreCase(arg)) {
 			product = new ConcrteProductB();
 			// 初始化设置product
 		} else {

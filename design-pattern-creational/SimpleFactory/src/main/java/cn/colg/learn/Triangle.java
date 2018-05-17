@@ -5,7 +5,7 @@ package cn.colg.learn;
  *
  * @author colg
  */
-public class Triangle extends Geometry {
+public class Triangle extends AbstractGeometry {
 
 	public Triangle() {
 		System.out.println("创建三角形！");

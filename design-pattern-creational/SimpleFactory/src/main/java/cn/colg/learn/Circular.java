@@ -5,22 +5,21 @@ package cn.colg.learn;
  *
  * @author colg
  */
-public class Circular extends Geometry {
-	
-	
+public class Circular extends AbstractGeometry {
 
-	public Circular() {
-		System.out.println("创建圆形！");
-	}
 
-	@Override
-	public void dram() {
-		System.out.println("Circular.dram()");
-	}
+    public Circular() {
+        System.out.println("创建圆形！");
+    }
 
-	@Override
-	public void erase() {
-		System.out.println("Circular.erase()");
-	}
+    @Override
+    public void dram() {
+        System.out.println("Circular.dram()");
+    }
+
+    @Override
+    public void erase() {
+        System.out.println("Circular.erase()");
+    }
 
 }
