@@ -13,11 +13,10 @@ public class Client {
         AbstractGeometryFactory geometry;
 
         // 读取配置文件中的参数
-        String type = new Props("config.properties").getStr("geometryType");
-        
+        String type = new Props("geometry.properties").getStr("geometryType");
+
         geometry = AbstractGeometryFactory.getGeometry(type);
         geometry.draw();
         geometry.erase();
-
     }
 }
