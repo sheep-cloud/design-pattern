@@ -23,5 +23,4 @@ public class Circular extends AbstractGeometryFactory {
     public void erase() {
         log.info("擦除圆形");
     }
-
 }

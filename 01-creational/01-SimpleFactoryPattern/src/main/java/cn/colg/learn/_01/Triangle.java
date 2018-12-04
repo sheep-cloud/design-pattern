@@ -23,5 +23,4 @@ public class Triangle extends AbstractGeometryFactory {
     public void erase() {
         log.info("擦除三角形");
     }
-
 }

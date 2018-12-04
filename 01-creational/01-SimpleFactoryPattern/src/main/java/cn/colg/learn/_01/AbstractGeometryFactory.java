@@ -7,6 +7,13 @@ package cn.colg.learn._01;
  */
 public abstract class AbstractGeometryFactory {
 
+    /**
+     * 静态工厂方法
+     *
+     * @param type
+     * @return
+     * @author colg
+     */
     public static AbstractGeometryFactory getGeometry(String type) {
         AbstractGeometryFactory geometry = null;
         if (type.equals("square")) {

@@ -23,5 +23,4 @@ public class Square extends AbstractGeometryFactory {
     public void erase() {
         log.info("擦除方形");
     }
-
 }
