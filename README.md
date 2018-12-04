@@ -34,9 +34,9 @@
 一个类对自己依赖的类知道的越少越好。无论被依赖的类多么复杂，都应该将逻辑封装在方法的内部，通过public方法提供给外部。这样当被依赖的类变化时，才能最小的影响该类。
 
 6、**合成复用原则（Composite Reuse Principle）**
-尽量首先使用合成/聚合的方式，而不是使用继承。
+尽量使用对象组合，而不是继承来达到复用的目的。
 
 # 参考文档
-- 设计模式Java版本（[查看设计模式Java版本详细资料](https://gof.quanke.name/) - [GitHub](https://github.com/quanke/design-pattern-java)）
+- 设计模式Java版本（[设计模式Java版](https://gof.quanke.name/) - [GitHub](https://github.com/quanke/design-pattern-java)）
 - 设计模式的三种类型（[设计模式的三种类型](https://blog.csdn.net/cyjch/article/details/51506525)）
 - 23种设计模式汇总整理（[23种设计模式汇总整理](https://blog.csdn.net/jason0539/article/details/44956775)）

@@ -11,6 +11,7 @@
 
     <modules>
         <module>01-SimpleFactoryPattern</module>
+        <module>02-FactoryMethodPattern</module>
     </modules>
 
 </project>
