@@ -1,31 +1,39 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<groupId>cn.clog</groupId>
-	<artifactId>design-pattern</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>pom</packaging>
-	<name>设计模式</name>
-	<description>设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。</description>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>cn.clog</groupId>
+    <artifactId>design-pattern</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <name>设计模式</name>
+    <description>设计模式（Design Pattern）是一套被反复使用、多数人知晓的、经过分类的、代码设计经验的总结。</description>
 
-	<dependencies>
+    <dependencies>
 		<!-- Junit 依赖 -->
-		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
-			<version>4.12</version>
-		</dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
 		
 		<!-- hutool 工具类依赖 -->
-		<dependency>
-			<groupId>cn.hutool</groupId>
-			<artifactId>hutool-all</artifactId>
-			<version>4.0.9</version>
-		</dependency>
-	</dependencies>
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-all</artifactId>
+            <version>4.2.1</version>
+        </dependency>
 
-	<modules>
-		<module>design-pattern-creational</module>
-		<module>design-pattern-structural</module>
-		<module>design-pattern-behavioral</module>
-	</modules>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.4</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <modules>
+        <module>design-pattern-creational</module>
+        <module>design-pattern-structural</module>
+        <module>design-pattern-behavioral</module>
+    </modules>
 </project>
