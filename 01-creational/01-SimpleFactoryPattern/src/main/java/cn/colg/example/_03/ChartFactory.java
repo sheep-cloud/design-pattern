@@ -19,13 +19,13 @@ public class ChartFactory {
      */
     public static Chart getChart(String type) {
         Chart chart = null;
-        if (type.equals("histogram")) {
+        if ("histogram".equals(type)) {
             chart = new HistogramChart();
             log.info("初始化设置柱状图！");
-        } else if (type.equals("pie")) {
+        } else if ("pie".equals(type)) {
             chart = new PieChart();
             log.info("初始化设置饼状图！");
-        } else if (type.equals("line")) {
+        } else if ("line".equals(type)) {
             chart = new LineChart();
             log.info("初始化设置折线图！");
         }

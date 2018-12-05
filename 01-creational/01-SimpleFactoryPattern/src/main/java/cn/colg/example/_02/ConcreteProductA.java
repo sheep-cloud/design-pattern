@@ -8,7 +8,7 @@ import lombok.extern.slf4j.Slf4j;
  * @author colg
  */
 @Slf4j
-public class ConcreteProductA extends Product {
+public class ConcreteProductA extends AbstractProduct {
 
     @Override
     public void methodDiff() {

@@ -5,7 +5,7 @@ package cn.colg.example._02;
  *
  * @author colg
  */
-public abstract class Product {
+public abstract class AbstractProduct {
 
     /**
      * 所有产品类的公共业务方法

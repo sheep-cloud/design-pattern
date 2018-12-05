@@ -1,6 +1,6 @@
 package cn.colg.learn._01;
 
-import cn.hutool.setting.dialect.Props;
+import cn.colg.util.IniUtil;
 
 /**
  * 客户端
@@ -10,10 +10,7 @@ import cn.hutool.setting.dialect.Props;
 public class Client {
     public static void main(String[] args) {
         AbstractGeometryFactory geometry;
-
-        // 读取配置文件中的参数
-        String type = new Props("learn.ini").getStr("geometryType");
-
+        String type = IniUtil.getStr("learn._01");
         geometry = AbstractGeometryFactory.getGeometry(type);
         geometry.draw();
         geometry.erase();

@@ -15,21 +15,21 @@ public class Chart {
 
     public Chart(Object[][] data, String type) {
         this.type = type;
-        if (type.equals("histogram")) {
+        if ("histogram".equals(type)) {
             log.info("初始化柱状图");
-        } else if (type.equals("pie")) {
+        } else if ("pie".equals(type)) {
             log.info("初始化饼状图");
-        } else if (type.equals("line")) {
+        } else if ("line".equals(type)) {
             log.info("初始化折线图");
         }
     }
 
     public void display() {
-        if (this.type.equals("histogram")) {
+        if ("histogram".equals(this.type)) {
             log.info("显示柱状图");
-        } else if (this.type.equals("pie")) {
+        } else if ("pie".equals(this.type)) {
             log.info("显示饼状图");
-        } else if (this.type.equals("line")) {
+        } else if ("line".equals(this.type)) {
             log.info("显示折线图");
         }
     }

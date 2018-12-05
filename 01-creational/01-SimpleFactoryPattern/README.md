@@ -7,7 +7,8 @@
   - 然后提供一个工厂类用于创建各种产品，在工厂类中提供一个创建产品的工厂方法，该方法可以根据所传入的参数不同创建不同的具体产品对象；
   - 客户端只需调用工厂类的工厂方法并传入相应的参数即可得到一个产品对象。
 - 简单工厂模式定义如下：
-  - 简单工厂模式(Simple Factory Pattern)：定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。因为在简单工厂模式中用于创建实例的方法是静态(static)方法，因此简单工厂模式又被称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。
+  - 定义一个工厂类，它可以根据参数的不同返回不同类的实例，被创建的实例通常都具有共同的父类。因为在简单工厂模式中用于创建实例的方法是静态(static)方法，因此简单工厂模式又被称为静态工厂方法(Static Factory Method)模式，它属于类创建型模式。
+- 简单工厂的要点在于：
   - 简单工厂模式的要点在于：当你需要什么，只需要传入一个正确的参数，就可以获取你所需要的对象，而无须知道其创建细节。
 
 ## 2. 结构图
@@ -19,7 +20,7 @@
      -  **工厂类可以被外界直接调用，创建所需的产品对象；**
      -  **在工厂类中提供了静态的工厂方法factoryMethod()，它的返回类型为抽象产品类型Product。**
 -  **Product（抽象产品角色）**
-  - **它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法，它的引入将提高系统的灵活性，使得在工厂类中只需定义一个通用的工厂方法，因为所有创建的具体产品对象都是其子类对象。**
+       - **它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法，它的引入将提高系统的灵活性，使得在工厂类中只需定义一个通用的工厂方法，因为所有创建的具体产品对象都是其子类对象。**
 -  **ConcreteProduct（具体产品角色）**
      -  **它是简单工厂模式的创建目标，所有被创建的对象都充当这个角色的某个具体类的实例。每一个具体产品角色都继承了抽象产品角色，需要实现在抽象产品中声明的抽象方法。**
 
@@ -85,7 +86,7 @@
   public abstract class AbstractGeometryFactory {
   
       /**
-       * 静态工厂方法
+       * 静态工厂方法；返回抽象产品类型
        *
        * @param type
        * @return
@@ -93,11 +94,11 @@
        */
       public static AbstractGeometryFactory getGeometry(String type) {
           AbstractGeometryFactory geometry = null;
-          if (type.equals("square")) {
+          if ("square".equals(type)) {
               geometry = new Square();
-          } else if (type.equals("triangle")) {
+          } else if ("triangle".equals(type)) {
               geometry = new Triangle();
-          } else if (type.equals("circular")) {
+          } else if ("circular".equals(type)) {
               geometry = new Circular();
           }
           return geometry;
@@ -208,11 +209,42 @@
   }
   ```
 
-- 配置文件`learn.ini`
+- 配置文件`config.ini`
 
   ```ini
   # 几何形状[square=方形, triangle=三角形, circular=圆形]
-  geometryType=triangle
+  learn._01=triangle
+  ```
+
+- 工具类
+
+  ```java
+  package cn.colg.util;
+  
+  import cn.hutool.setting.dialect.Props;
+  
+  /**
+   * 配置文件操作类
+   *
+   * @author colg
+   */
+  public class IniUtil {
+  
+      /** 配置文件路径 */
+      public static final String PATH = "config.ini";
+  
+      /**
+       * 读取配置文件中的参数
+       *
+       * @param key 配置文件的key
+       * @return
+       * @author colg
+       */
+      public static String getStr(String key) {
+          Props props = new Props(PATH);
+          return props.getStr(key);
+      }
+  }
   ```
 
 - 客户端
@@ -230,13 +262,18 @@
   public class Client {
       public static void main(String[] args) {
           AbstractGeometryFactory geometry;
-  
-          // 读取配置文件中的参数
-          String type = new Props("learn.ini").getStr("geometryType");
-  
+          String type = IniUtil.getStr("learn._01");
           geometry = AbstractGeometryFactory.getGeometry(type);
           geometry.draw();
           geometry.erase();
       }
   }
+  ```
+
+- 编译运行
+
+  ```ini
+  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 创建三角形
+  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 绘制三角形
+  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 擦除三角形
   ```

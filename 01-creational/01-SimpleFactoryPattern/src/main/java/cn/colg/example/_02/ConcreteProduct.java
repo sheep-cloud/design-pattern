@@ -5,7 +5,7 @@ package cn.colg.example._02;
  *
  * @author colg
  */
-public class ConcreteProduct extends Product {
+public class ConcreteProduct extends AbstractProduct {
 
     @Override
     public void methodDiff() {

@@ -14,12 +14,12 @@ public class Factory {
      * @return
      * @author colg
      */
-    public static Product getProduct(String arg) {
-        Product product = null;
-        if (arg.equals("A")) {
+    public static AbstractProduct getProduct(String arg) {
+        AbstractProduct product = null;
+        if ("A".equals(arg)) {
             product = new ConcreteProductA();
             // 初始化设置product
-        } else if (arg.equals("B")) {
+        } else if ("B".equals(arg)) {
             product = new ConcreteProductB();
             // 初始化设置product
         }

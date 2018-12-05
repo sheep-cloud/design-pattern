@@ -8,7 +8,7 @@ package cn.colg.learn._01;
 public abstract class AbstractGeometryFactory {
 
     /**
-     * 静态工厂方法
+     * 静态工厂方法；返回抽象产品类型
      *
      * @param type
      * @return
@@ -16,11 +16,11 @@ public abstract class AbstractGeometryFactory {
      */
     public static AbstractGeometryFactory getGeometry(String type) {
         AbstractGeometryFactory geometry = null;
-        if (type.equals("square")) {
+        if ("square".equals(type)) {
             geometry = new Square();
-        } else if (type.equals("triangle")) {
+        } else if ("triangle".equals(type)) {
             geometry = new Triangle();
-        } else if (type.equals("circular")) {
+        } else if ("circular".equals(type)) {
             geometry = new Circular();
         }
         return geometry;
