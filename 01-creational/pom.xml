@@ -12,6 +12,10 @@
     <modules>
         <module>01-SimpleFactoryPattern</module>
         <module>02-FactoryMethodPattern</module>
+        <module>03-AbstractFactoryPattern</module>
+        <module>04-SingletonPattern</module>
+        <module>05-PrototypePattern</module>
+        <module>06-BuilderPattern</module>
     </modules>
 
 </project>
