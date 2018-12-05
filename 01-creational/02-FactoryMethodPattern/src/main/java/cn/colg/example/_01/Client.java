@@ -1,6 +1,6 @@
 package cn.colg.example._01;
 
-import cn.hutool.setting.dialect.Props;
+import cn.colg.util.IniUtil;
 
 /**
  * 客户端
@@ -11,10 +11,7 @@ public class Client {
 
     public static void main(String[] args) {
         Logger logger;
-        
-        // 读取配置文件的参数
-        String type = new Props("logger.ini").getStr("loggerType");
-        
+        String type = IniUtil.getStr("example._01");
         logger = LoggerFactory.createLogger(type);
         logger.writeLog();
     }

@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
  * @author colg
  */
 @Slf4j
-public class GifImage implements Image {
+public class GIF implements Image {
 
-    public GifImage() {
+    public GIF() {
         log.info("创建GIF格式图片");
     }
 

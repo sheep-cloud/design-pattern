@@ -1,5 +1,7 @@
 package cn.colg.learn._01;
 
+import cn.colg.util.IniUtil;
+
 /**
  * 客户端
  *
@@ -8,7 +10,7 @@ package cn.colg.learn._01;
 public class Client {
     public static void main(String[] args) {
         AbstractImageFactory factory;
-        factory = (AbstractImageFactory)IniUtil.getBean();
+        factory = (AbstractImageFactory)IniUtil.getBean("learn._01");
         factory.readExtName();
     }
 }

@@ -55,20 +55,18 @@
 - 需求
 
   ```java
-  package cn.colg.learn._01;
-  
   /**
-   * 客户端
+   * 工厂方法模式
+   * 
+   * <pre>
+   * 使用工厂方法模式设计一个程序来读取各种不同类型的图片格式，针对每一种图片格式都设计一个图片读取器，
+   * 如GIF图片读取器用于读取GIF格式的图片、JPG图片读取器用于读取JPG格式的图片。
+   * 需充分考虑系统的灵活性和可扩展性。
+   * </pre>
    *
    * @author colg
    */
-  public class Client {
-      public static void main(String[] args) {
-          AbstractImageFactory factory;
-          factory = (AbstractImageFactory)IniUtil.getBean();
-          factory.readExtName();
-      }
-  }
+  package cn.colg.learn._01;
   ```
 
 - 抽象产品
@@ -105,9 +103,9 @@
    * @author colg
    */
   @Slf4j
-  public class GifImage implements Image {
+  public class GIF implements Image {
   
-      public GifImage() {
+      public GIF() {
           log.info("创建GIF格式图片");
       }
   
@@ -129,9 +127,9 @@
    * @author colg
    */
   @Slf4j
-  public class JpgImage implements Image {
+  public class JPG implements Image {
   
-      public JpgImage() {
+      public JPG() {
           log.info("创建JPG格式的图片");
       }
   
@@ -202,26 +200,26 @@
    *
    * @author colg
    */
-  public class GifImageFactory extends AbstractImageFactory {
+  public class GIFFactory extends AbstractImageFactory {
   
       @Override
       public Image createImage() {
-          Image image = new GifImage();
-          // xxx
+          // 使用默认方式创建图片
+          Image image = new GIF();
           return image;
       }
   
       @Override
       public Image createImage(String args) {
-          Image image = new GifImage();
-          // xxx
+          // 使用参数args创建图片
+          Image image = new GIF();
           return image;
       }
   
       @Override
       public Image createImage(Object obj) {
-          Image image = new GifImage();
-          // xxx
+          // 使用对象obj数据创建图片
+          Image image = new GIF();
           return image;
       }
   }
@@ -235,58 +233,73 @@
    *
    * @author colg
    */
-  public class JpgImageFactory extends AbstractImageFactory {
+  public class JPGFactory extends AbstractImageFactory {
   
       @Override
       public Image createImage() {
-          Image image = new JpgImage();
-          // xxx
+          // 使用默认方式创建图片
+          Image image = new JPG();
           return image;
       }
   
       @Override
       public Image createImage(String args) {
-          Image image = new JpgImage();
-          // xxx
+          // 使用参数args创建图片
+          Image image = new JPG();
           return image;
       }
   
       @Override
       public Image createImage(Object obj) {
-          Image image = new JpgImage();
-          // xxx
+          // 使用对象obj数据创建图片
+          Image image = new JPG();
           return image;
       }
   }
   ```
-- 创建实例工具类
+
+- 工具类
 
   ```java
-  package cn.colg.learn._01;
+  package cn.colg.util;
   
   import cn.hutool.setting.dialect.Props;
   
   /**
-   * Ini配置文件操作类
+   * 配置文件操作类
    *
    * @author colg
    */
   public class IniUtil {
   
+      /** 配置文件路径 */
+      public static final String PATH = "config.ini";
+  
       /**
-       * 该方法用于从ini配置文件中提取具体类名，并返回一个实例对象
+       * 读取配置文件中的参数
        *
+       * @param key 配置文件的key
        * @return
        * @author colg
        */
-      public static Object getBean() {
-          // 读取配置文件里的参数 cn.colg.learn._01.GifImageFactory
-          String factoryName = new Props("learn.ini").getStr("imageFactoryName");
+      public static String getStr(String key) {
+          Props props = new Props(PATH);
+          return props.getStr(key);
+      }
   
+      /**
+       * 该方法用于从ini配置文件中提取具体类名，并返回一个实例对象
+       *
+       * @param key 配置文件的key
+       * @return
+       * @author colg
+       */
+      public static Object getBean(String key) {
+          String className = getStr(key);
           Object object = null;
           try {
               // 通过反射创建实例
-              object = Class.forName(factoryName).newInstance();
+              object = Class.forName(className).newInstance();
           } catch (InstantiationException | IllegalAccessException | ClassNotFoundException e) {
               e.printStackTrace();
           }
@@ -295,6 +308,14 @@
       }
   }
   ```
+
+- 配置文件`config.ini`
+
+  ```ini
+  # 具体工厂全类名 - 图片工厂
+  learn._01=cn.colg.learn._01.GIFFactory
+  ```
+
 - 客户端
 
   ```java
@@ -308,8 +329,15 @@
   public class Client {
       public static void main(String[] args) {
           AbstractImageFactory factory;
-          factory = (AbstractImageFactory)IniUtil.getBean();
+          factory = (AbstractImageFactory)IniUtil.getBean("learn._01");
           factory.readExtName();
       }
   }
+  ```
+
+- 编译运行
+
+  ```ini
+  2018-12-04 23:12:38.856 - INFO [main] cn.colg.learn._01.GifImage  : 创建GIF格式图片
+  2018-12-04 23:12:38.856 - INFO [main] cn.colg.learn._01.GifImage  : 读取GIF扩展名的图片
   ```

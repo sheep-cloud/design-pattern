@@ -1,6 +1,6 @@
 package cn.colg.example._02;
 
-import cn.hutool.setting.dialect.Props;
+import cn.colg.util.IniUtil;
 
 /**
  * 客户端
@@ -11,13 +11,11 @@ public class Client {
 
     public static void main(String[] args) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
         Factory factory;
+        // factory = new ConcreteFactory();
         
-        /*factory = new ConcreteFactory();*/
-        
-        // 读取配置文件的参数 cn.colg.example._02.ConcreteFactory
-        String factoryName = new Props("factory-name.ini").getStr("concretefactoryName");
+        String factoryName = IniUtil.getStr("example._02");
         factory = (Factory)Class.forName(factoryName).newInstance();
-        
+
         Product product;
         product = factory.factoryMethod();
         product.methodDiff();

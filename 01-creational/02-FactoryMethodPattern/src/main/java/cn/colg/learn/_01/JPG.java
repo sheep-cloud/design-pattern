@@ -8,9 +8,9 @@ import lombok.extern.slf4j.Slf4j;
  * @author colg
  */
 @Slf4j
-public class JpgImage implements Image {
+public class JPG implements Image {
 
-    public JpgImage() {
+    public JPG() {
         log.info("创建JPG格式的图片");
     }
 

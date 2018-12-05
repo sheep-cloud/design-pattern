@@ -1,5 +1,7 @@
 package cn.colg.example._04;
 
+import cn.colg.util.IniUtil;
+
 /**
  * 客户端
  *
@@ -8,7 +10,7 @@ package cn.colg.example._04;
 public class Client {
     public static void main(String[] args) {
         AbstractLoggerFactory factory;
-        factory = (AbstractLoggerFactory)IniUtil.getBean();
+        factory = (AbstractLoggerFactory)IniUtil.getBean("example._04");
         factory.writeLog();
     }
 }
