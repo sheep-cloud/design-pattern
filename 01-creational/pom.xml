@@ -7,7 +7,7 @@
     </parent>
     <artifactId>01-creational</artifactId>
     <packaging>pom</packaging>
-    <name>01-creational :: 创建者模式</name>
+    <name>01-creational :: 创建型模式</name>
 
     <modules>
         <module>01-SimpleFactoryPattern</module>
