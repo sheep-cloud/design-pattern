@@ -4,7 +4,7 @@ import cn.hutool.crypto.SecureUtil;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 具体
+ * 具体构件装饰类 - Sha1
  *
  * @author colg
  */

@@ -265,7 +265,7 @@
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 具体
+   * 具体构件装饰类 - Sha1
    *
    * @author colg
    */
@@ -329,7 +329,7 @@
 
   ​	
 
-  ```ini
+  ```java
   2018-12-06 14:15:20.662 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密
   2018-12-06 14:15:20.668 - INFO [           main] cn.colg.learn._01.Client                 : 一次加密（位移） : efgabcd
   2018-12-06 14:15:20.669 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
