@@ -304,7 +304,7 @@
 
 - 配置文件`config.ini`
 
-  ```properties
+  ```ini
   example._03=cn.colg.example._03.EncryptFacade
   ```
 
