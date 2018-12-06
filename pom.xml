@@ -39,9 +39,9 @@
     </dependencies>
 
     <modules>
-        <module>design-pattern-creational</module>
         <module>design-pattern-structural</module>
         <module>design-pattern-behavioral</module>
         <module>01-creational</module>
+        <module>02-structural</module>
     </modules>
 </project>

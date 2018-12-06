@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>cn.clog</groupId>
+        <artifactId>design-pattern</artifactId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <artifactId>02-structural</artifactId>
+    <packaging>pom</packaging>
+    <name>02-structural :: 结构型模式</name>
+
+    <modules>
+        <module>01-AdapterPattern</module>
+        <module>02-BridgePattern</module>
+        <module>03-CompositePattern</module>
+        <module>04-DecoratorPattern</module>
+        <module>05-FacadePattern</module>
+        <module>06-FlyweightPattern</module>
+        <module>07-ProxyPattern</module>
+    </modules>
+
+</project>
