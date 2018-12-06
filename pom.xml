@@ -30,6 +30,7 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- logback -->
         <dependency>
             <groupId>ch.qos.logback</groupId>
             <artifactId>logback-classic</artifactId>
@@ -39,9 +40,9 @@
     </dependencies>
 
     <modules>
-        <module>design-pattern-structural</module>
-        <module>design-pattern-behavioral</module>
         <module>01-creational</module>
         <module>02-structural</module>
+        <module>03-behavioral</module>
     </modules>
+
 </project>
