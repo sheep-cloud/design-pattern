@@ -46,6 +46,6 @@ public class VideoFile extends AbstractFile {
     @Override
     public void killVirus() {
         // 模拟杀毒
-        log.info("对视频文件[{}]进行杀毒", name);
+        log.info("对视频文件 [{}] 进行杀毒", name);
     }
 }

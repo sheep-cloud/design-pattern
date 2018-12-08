@@ -279,12 +279,12 @@
 
 - 编译运行
 
-  ```ini
-  2018-12-06 03:17:35.672 - INFO [           main] cn.colg.learn._01.Form                   : 窗体名称 : 窗体_1
-  2018-12-06 03:17:35.680 - INFO [           main] cn.colg.learn._01.Form                   : 窗体名称 : 窗体_2
-  2018-12-06 03:17:35.680 - INFO [           main] cn.colg.learn._01.Button                 : 显示按钮 : 按钮_1
-  2018-12-06 03:17:35.681 - INFO [           main] cn.colg.learn._01.Button                 : 显示按钮 : 按钮_2
-  2018-12-06 03:17:35.681 - INFO [           main] cn.colg.learn._01.TextBox                : 显示文本框 : 文本框_1
-  2018-12-06 03:17:35.681 - INFO [           main] cn.colg.learn._01.TextBox                : 显示文本框 : 文本框_2
-  2018-12-06 03:17:35.681 - INFO [           main] cn.colg.learn._01.Panel                  : 面板名称 : 面板_1
+  ```java
+  2018-12-08 20:52:29.450 - INFO [           main] cn.colg.learn._01.Form                   : 窗体名称 : 窗体_1
+  2018-12-08 20:52:29.454 - INFO [           main] cn.colg.learn._01.Form                   : 窗体名称 : 窗体_2
+  2018-12-08 20:52:29.455 - INFO [           main] cn.colg.learn._01.Button                 : 显示按钮 : 按钮_1
+  2018-12-08 20:52:29.455 - INFO [           main] cn.colg.learn._01.Button                 : 显示按钮 : 按钮_2
+  2018-12-08 20:52:29.455 - INFO [           main] cn.colg.learn._01.TextBox                : 显示文本框 : 文本框_1
+  2018-12-08 20:52:29.455 - INFO [           main] cn.colg.learn._01.TextBox                : 显示文本框 : 文本框_2
+  2018-12-08 20:52:29.455 - INFO [           main] cn.colg.learn._01.Panel                  : 面板名称 : 面板_1
   ```

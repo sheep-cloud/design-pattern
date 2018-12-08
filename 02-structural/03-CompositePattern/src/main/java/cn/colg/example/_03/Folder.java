@@ -55,7 +55,7 @@ public class Folder extends AbstractFile {
     @Override
     public void killVirus() {
         // 模拟杀毒
-        log.info("对文件夹[{}]进行杀毒", name);
+        log.info("对文件夹 [{}] 进行杀毒", name);
 
         // 递归调用成员构件的killVirus()方法
         for (AbstractFile abstractFile : list) {

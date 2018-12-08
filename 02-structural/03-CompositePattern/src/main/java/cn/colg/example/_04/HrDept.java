@@ -26,7 +26,6 @@ public class HrDept extends AbstractUnit {
 
     @Override
     public void sendNotification() {
-        log.info("人力资源部[{}]发布通知", name);
+        log.info("人力资源部 [{}] 发布通知", name);
     }
-
 }

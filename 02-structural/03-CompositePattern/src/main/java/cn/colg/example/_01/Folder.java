@@ -25,7 +25,7 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Folder {
 
-    /** 文件夹名称 */
+    /** 文件夹名称；构造注入 */
     private String name;
 
     /** 用于存储Foler类型的成员 */
@@ -81,9 +81,14 @@ public class Folder {
 
     /// 需提供三个不同的方法getChildFolder(int i)、getChildImageFile(int i)和getChildTextFile(int i)来获取成员，代码省略
 
+    /**
+     * 对文件夹进行杀毒
+     *
+     * @author colg
+     */
     public void killVirus() {
         // 简化代码，模拟杀毒
-        log.info("对文件夹[{}]进行杀毒", name);
+        log.info("对文件夹 [{}] 进行杀毒", name);
 
         // 如果是Folder类型的成员，递归调用Folder的killVirus()方法
         for (Folder folder : folderList) {

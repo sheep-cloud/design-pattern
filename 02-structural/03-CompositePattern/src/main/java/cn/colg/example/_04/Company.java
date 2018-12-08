@@ -51,11 +51,10 @@ public class Company extends AbstractUnit {
 
     @Override
     public void sendNotification() {
-        log.info("公司[{}]发布通知", name);
+        log.info("公司 [{}] 发布通知", name);
 
         for (AbstractUnit abstractUnit : list) {
             abstractUnit.sendNotification();
         }
     }
-
 }

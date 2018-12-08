@@ -32,6 +32,6 @@ public class TextFile {
      */
     public void killVirus() {
         // 简化代码，模拟杀毒
-        log.info("对文本文件[{}]进行杀毒", name);
+        log.info("对文本文件 [{}] 进行杀毒", name);
     }
 }

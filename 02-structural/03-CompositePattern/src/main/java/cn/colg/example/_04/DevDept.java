@@ -26,7 +26,6 @@ public class DevDept extends AbstractUnit {
 
     @Override
     public void sendNotification() {
-        log.info("研发部[{}]发布通知", name);
+        log.info("研发部 [{}] 发布通知", name);
     }
-
 }
