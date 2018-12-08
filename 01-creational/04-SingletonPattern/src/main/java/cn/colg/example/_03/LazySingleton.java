@@ -31,12 +31,13 @@ public class LazySingleton {
      * @return
      * @author colg
      */
-    /*synchronized public static LazySingleton getInstance() {
+    @Deprecated
+    synchronized public static LazySingleton getInstance_01() {
         if (instance == null) {
             instance = new LazySingleton();
         }
         return instance;
-    }*/
+    }
 
     /**
      * 共有静态成员方法，返回唯一实例
@@ -52,21 +53,20 @@ public class LazySingleton {
      * @return
      * @author colg
      */
-    /*public static LazySingleton getInstance() {
+    public static LazySingleton getInstance_02() {
         if (instance == null) {
             synchronized (LazySingleton.class) {
                 instance = new LazySingleton();
             }
         }
         return instance;
-    }*/
+    }
 
     /**
      * 共有静态成员方法，返回唯一实例；双重检查锁定
      * 
      * <pre>
      * 在synchronized中再进行一次(instance == null)判断，这种方式称为双重检查锁定(Double-Check Locking)。
-     * 
      * 由于volatile关键字会屏蔽Java虚拟机所做的一些代码优化，可能会导致系统运行效率降低，因此即使使用双重检查锁定来实现单例模式也不是一种完美的实现方式。
      * </pre>
      *

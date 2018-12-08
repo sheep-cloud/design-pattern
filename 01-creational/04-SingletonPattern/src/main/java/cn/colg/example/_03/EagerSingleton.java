@@ -10,7 +10,9 @@ public class EagerSingleton {
     /**
      * 私有静态成员变量，存储唯一实例
      * 
-     * <pre>定义静态变量的时候实例化单例类，因此在类加载的时候就已经创建了单例对象</pre>
+     * <pre>
+     * 定义静态变量的时候实例化单例类，因此在类加载的时候就已经创建了单例对象
+     * </pre>
      */
     private static EagerSingleton instance = new EagerSingleton();
 
@@ -26,5 +28,4 @@ public class EagerSingleton {
     public static EagerSingleton getInstance() {
         return instance;
     }
-
 }

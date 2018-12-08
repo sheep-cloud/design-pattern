@@ -13,6 +13,6 @@ public class Client {
         IoDHSingleton singleton1, singleton2;
         singleton1 = IoDHSingleton.getInstance();
         singleton2 = IoDHSingleton.getInstance();
-        log.info("单例 : {}", singleton1 == singleton2);
+        log.info("单例模式 - IoDH : {}", singleton1 == singleton2);
     }
 }

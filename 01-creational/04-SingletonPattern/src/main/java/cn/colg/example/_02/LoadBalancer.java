@@ -6,7 +6,7 @@ import java.util.List;
 import cn.hutool.core.util.RandomUtil;
 
 /**
- * 负载均衡服务器
+ * 单例 - 负载均衡服务器
  * 
  * <pre>
  * 单例类，真实环境下该类将非常复杂，包括大量初始化的工作和业务方法，考虑到代码的可读性和易理解性，只列出部分与模式相关的核心代码
@@ -20,12 +20,10 @@ public class LoadBalancer {
     private static LoadBalancer instance = null;
 
     /** 服务器集合 */
-    private List<String> serverList = null;
+    private List<String> serverList = new ArrayList<>();
 
     /** 私有构造函数 */
-    private LoadBalancer() {
-        serverList = new ArrayList<>();
-    }
+    private LoadBalancer() {}
 
     /**
      * 共有静态成员方法，返回唯一实例
@@ -73,7 +71,7 @@ public class LoadBalancer {
         return serverList.get(randomInt);
     }
 
-    /** 当前请求下标 */
+    /** 当前请求下标；设置初始请求下标为0 */
     private int index = 0;
 
     /**

@@ -1,8 +1,5 @@
-package cn.colg.learn._01;
+package cn.colg.example._03;
 
-import cn.colg.learn._01.singleton.EagerSingleton;
-import cn.colg.learn._01.singleton.IodhSingleton;
-import cn.colg.learn._01.singleton.LazySingleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -22,10 +19,5 @@ public class Client {
         lazySingleton1 = LazySingleton.getInstance();
         lazySingleton2 = LazySingleton.getInstance();
         log.info("单例模式 - 懒汉式 : {}", lazySingleton1 == lazySingleton2);
-
-        IodhSingleton iodhSingLeton1, iodhSingLeton2;
-        iodhSingLeton1 = IodhSingleton.getInstance();
-        iodhSingLeton2 = IodhSingleton.getInstance();
-        log.info("单例模式 - IoDH : {}", iodhSingLeton1 == iodhSingLeton2);
     }
 }

@@ -3,11 +3,13 @@
 ## 1. 概述
 
 - 单例模式定义如下：
-  - 确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。单例模式是一种对象创建型模式。
+  - 确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例，这个类称为单例类，它提供全局访问的方法。
+  - 单例模式是一种对象创建型模式。
 - 单例模式有三个要点：
   - 某个类只能有一个实例；
   - 它必须自行创建这个实例；
   - 它必须自行向整个系统提供这个实例。
+- 单例模式是结构最简单的设计模式一，在它的核心结构中只包含一个被称为单例类的特殊类。
 
 ## 2. 结构图
 
@@ -105,10 +107,10 @@ public class EagerSingleton {
 ### 5.3. 懒汉式 - Lazy
 
 ```java
-package cn.colg.example.learn._01.singleton;
+package cn.colg.learn._01.singleton;
 
 /**
- * 负载均衡服务器 - 单例模式（懒汉式，带双重检查锁定）
+ * 单例模式（懒汉式，带双重检查锁定）
  *
  * @author colg
  */
@@ -173,17 +175,17 @@ public class IodhSingleton {
     public static IodhSingleton getInstance() {
         return HolderClass.instance;
     }
-
+}
 ```
 
 ### 5.4. 客户端
 
 ```java
-package cn.colg.example.learn._01;
+package cn.colg.learn._01;
 
-import cn.colg.example.learn._01.singleton.EagerSingleton;
-import cn.colg.example.learn._01.singleton.IodhSingleton;
-import cn.colg.example.learn._01.singleton.LazySingleton;
+import cn.colg.learn._01.singleton.EagerSingleton;
+import cn.colg.learn._01.singleton.IodhSingleton;
+import cn.colg.learn._01.singleton.LazySingleton;
 import lombok.extern.slf4j.Slf4j;
 
 /**
@@ -197,27 +199,26 @@ public class Client {
         EagerSingleton eagerSingleton1, eagerSingleton2;
         eagerSingleton1 = EagerSingleton.getInstance();
         eagerSingleton2 = EagerSingleton.getInstance();
-        log.info("单例 ? {}", eagerSingleton1 == eagerSingleton2);
+        log.info("单例模式 - 饿汉式 : {}", eagerSingleton1 == eagerSingleton2);
 
         LazySingleton lazySingleton1, lazySingleton2;
         lazySingleton1 = LazySingleton.getInstance();
         lazySingleton2 = LazySingleton.getInstance();
-        log.info("单例 ? {}", lazySingleton1 == lazySingleton2);
+        log.info("单例模式 - 懒汉式 : {}", lazySingleton1 == lazySingleton2);
 
         IodhSingleton iodhSingLeton1, iodhSingLeton2;
         iodhSingLeton1 = IodhSingleton.getInstance();
         iodhSingLeton2 = IodhSingleton.getInstance();
-        log.info("单例 ? {}", iodhSingLeton1 == iodhSingLeton2);
+        log.info("单例模式 - IoDH : {}", iodhSingLeton1 == iodhSingLeton2);
     }
 }
 ```
 
 ### 5.5. 编译运行
 
-```ini
-2018-12-05 02:10:53.475 - INFO [main] cn.colg.example.learn._01.Client         : 单例 ? true
-2018-12-05 02:10:53.481 - INFO [main] cn.colg.example.learn._01.Client         : 单例 ? true
-2018-12-05 02:10:53.482 - INFO [main] cn.colg.example.learn._01.Client         : 单例 ? true
-
+```java
+2018-12-08 18:33:43.976 - INFO [           main] cn.colg.learn._01.Client                 : 单例模式 - 饿汉式 : true
+2018-12-08 18:33:43.986 - INFO [           main] cn.colg.learn._01.Client                 : 单例模式 - 懒汉式 : true
+2018-12-08 18:33:44.010 - INFO [           main] cn.colg.learn._01.Client                 : 单例模式 - IoDH : true
 ```
 

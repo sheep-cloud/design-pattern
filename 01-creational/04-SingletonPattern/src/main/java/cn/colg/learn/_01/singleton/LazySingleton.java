@@ -1,7 +1,7 @@
 package cn.colg.learn._01.singleton;
 
 /**
- * 负载均衡服务器 - 单例模式（懒汉式，带双重检查锁定）
+ * 单例模式（懒汉式，带双重检查锁定）
  *
  * @author colg
  */
