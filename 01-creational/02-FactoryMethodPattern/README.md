@@ -105,10 +105,6 @@
   @Slf4j
   public class GIF implements Image {
   
-      public GIF() {
-          log.info("创建GIF格式图片");
-      }
-  
       @Override
       public void readExtName() {
           log.info("读取GIF扩展名的图片");
@@ -129,10 +125,6 @@
   @Slf4j
   public class JPG implements Image {
   
-      public JPG() {
-          log.info("创建JPG格式的图片");
-      }
-  
       @Override
       public void readExtName() {
           log.info("读取JPG扩展名的图片");
@@ -151,15 +143,34 @@
    * @author colg
    */
   public abstract class AbstractImageFactory {
-      
+  
       /**
-       * 读取扩展名
+       * 使用默认方式读取扩展名
        *
        * @author colg
        */
       public void readExtName() {
-          Image image = this.createImage();
-          image.readExtName();
+          this.createImage().readExtName();
+      }
+  
+      /**
+       * 使用参数args方式读取扩展名
+       *
+       * @param args
+       * @author colg
+       */
+      public void readExtName(String args) {
+          this.createImage(args).readExtName();
+      }
+  
+      /**
+       * 使用对象obj封装的数据读取扩展名
+       *
+       * @param obj
+       * @author colg
+       */
+      public void readExtName(Object obj) {
+          this.createImage(obj).readExtName();
       }
   
       /**
@@ -195,32 +206,35 @@
   ```java
   package cn.colg.learn._01;
   
+  import lombok.extern.slf4j.Slf4j;
+  
   /**
    * 具体工厂 - GIF图片工厂
    *
    * @author colg
    */
+  @Slf4j
   public class GIFFactory extends AbstractImageFactory {
   
       @Override
       public Image createImage() {
           // 使用默认方式创建图片
-          Image image = new GIF();
-          return image;
+          log.info("使用默认方式创建图片");
+          return new GIF();
       }
   
       @Override
       public Image createImage(String args) {
           // 使用参数args创建图片
-          Image image = new GIF();
-          return image;
+          log.info("使用参数args创建图片");
+          return new GIF();
       }
   
       @Override
       public Image createImage(Object obj) {
           // 使用对象obj数据创建图片
-          Image image = new GIF();
-          return image;
+          log.info("使用对象obj数据创建图片");
+          return new GIF();
       }
   }
   ```
@@ -228,32 +242,35 @@
   ```java
   package cn.colg.learn._01;
   
+  import lombok.extern.slf4j.Slf4j;
+  
   /**
    * 具体工厂 - JPG图片工厂
    *
    * @author colg
    */
+  @Slf4j
   public class JPGFactory extends AbstractImageFactory {
   
       @Override
       public Image createImage() {
           // 使用默认方式创建图片
-          Image image = new JPG();
-          return image;
+          log.info("使用默认方式创建图片");
+          return new JPG();
       }
   
       @Override
       public Image createImage(String args) {
           // 使用参数args创建图片
-          Image image = new JPG();
-          return image;
+          log.info("使用参数args创建图片");
+          return new JPG();
       }
   
       @Override
       public Image createImage(Object obj) {
           // 使用对象obj数据创建图片
-          Image image = new JPG();
-          return image;
+          log.info("使用对象obj数据创建图片");
+          return new JPG();
       }
   }
   ```
@@ -321,16 +338,22 @@
   ```java
   package cn.colg.learn._01;
   
+  import cn.colg.util.IniUtil;
+  import lombok.extern.slf4j.Slf4j;
+  
   /**
    * 客户端
    *
    * @author colg
    */
+  @Slf4j
   public class Client {
       public static void main(String[] args) {
           AbstractImageFactory factory;
           factory = (AbstractImageFactory)IniUtil.getBean("learn._01");
           factory.readExtName();
+          log.info("-----------------------------------------------------------------");
+          factory.readExtName("args");
       }
   }
   ```
@@ -338,6 +361,9 @@
 - 编译运行
 
   ```ini
-  2018-12-04 23:12:38.856 - INFO [main] cn.colg.learn._01.GifImage  : 创建GIF格式图片
-  2018-12-04 23:12:38.856 - INFO [main] cn.colg.learn._01.GifImage  : 读取GIF扩展名的图片
+  2018-12-08 18:14:39.871 - INFO [           main] cn.colg.learn._01.GIFFactory             : 使用默认方式创建图片
+  2018-12-08 18:14:39.872 - INFO [           main] cn.colg.learn._01.GIF                    : 读取GIF扩展名的图片
+  2018-12-08 18:14:39.872 - INFO [           main] cn.colg.learn._01.Client                 : -----------------------------------------------------------------------------------
+  2018-12-08 18:14:39.872 - INFO [           main] cn.colg.learn._01.GIFFactory             : 使用参数args创建图片
+  2018-12-08 18:14:39.872 - INFO [           main] cn.colg.learn._01.GIF                    : 读取GIF扩展名的图片
   ```

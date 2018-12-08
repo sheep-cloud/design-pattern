@@ -8,11 +8,9 @@ import cn.colg.util.IniUtil;
  * @author colg
  */
 public class Client {
-
     public static void main(String[] args) {
-        Logger logger;
         String type = IniUtil.getStr("example._01");
-        logger = LoggerFactory.createLogger(type);
+        Logger logger = LoggerFactory.createLogger(type);
         logger.writeLog();
     }
 }

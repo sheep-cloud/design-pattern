@@ -1,22 +1,18 @@
 package cn.colg.example._02;
 
-import lombok.extern.slf4j.Slf4j;
-
 /**
  * 具体工厂
+ * 
+ * <pre>
+ * 它是抽象工厂类的子类，实现了抽象工厂中定义的工厂方法，并可由客户端调用，返回一个具体产品类的实例。
+ * </pre>
  *
  * @author colg
  */
-@Slf4j
 public class ConcreteFactory implements Factory {
-
-    public ConcreteFactory() {
-        log.info("创建具体工厂");
-    }
 
     @Override
     public Product factoryMethod() {
         return new ConcreteProduct();
     }
-
 }

@@ -1,15 +1,19 @@
 package cn.colg.example._04;
 
+import lombok.extern.slf4j.Slf4j;
+
 /**
  * 具体工厂 - 文件日志工厂
  *
  * @author colg
  */
+@Slf4j
 public class FileLoggerFactory extends AbstractLoggerFactory {
 
     @Override
     public Logger createLogger() {
         // 使用默认方式创建日志文件
+        log.info("使用默认方式创建日志文件");
         Logger logger = new FileLogger();
         // 初始化文件日志记录器，代码省略
         return logger;

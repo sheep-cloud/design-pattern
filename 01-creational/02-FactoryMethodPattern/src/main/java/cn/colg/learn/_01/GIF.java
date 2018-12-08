@@ -10,10 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class GIF implements Image {
 
-    public GIF() {
-        log.info("创建GIF格式图片");
-    }
-
     @Override
     public void readExtName() {
         log.info("读取GIF扩展名的图片");
