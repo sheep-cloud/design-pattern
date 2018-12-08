@@ -15,5 +15,4 @@ public class BMPImage extends AbstractImage {
                                     .setFileName(fileName);
         imageImp.doPaint(matrix);
     }
-
 }

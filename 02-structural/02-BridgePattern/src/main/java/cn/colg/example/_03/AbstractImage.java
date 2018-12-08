@@ -7,10 +7,10 @@ import lombok.Setter;
  *
  * @author colg
  */
-@Setter
 public abstract class AbstractImage {
 
-    /** 定义实现类接口对象 */
+    /** 定义实现类接口对象；设值注入 */
+    @Setter
     protected ImageImp imageImp;
 
     /**

@@ -1,17 +1,18 @@
 package cn.colg.example._02;
 
-import lombok.Setter;
-
 /**
  * 抽象类 - 笔
  *
  * @author colg
  */
-@Setter
 public abstract class AbstractPen {
 
-    /** 定义实现类接口对象，维护该对象 */
+    /** 定义实现类接口对象，维护该对象；构造注入 */
     protected Color color;
+
+    public AbstractPen(Color color) {
+        this.color = color;
+    }
 
     /**
      * 绘图

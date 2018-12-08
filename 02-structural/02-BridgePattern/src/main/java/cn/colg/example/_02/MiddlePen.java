@@ -10,6 +10,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class MiddlePen extends AbstractPen {
 
+    public MiddlePen(Color color) {
+        super(color);
+    }
+
     @Override
     public void draw() {
         log.info("中号笔");
@@ -17,5 +21,4 @@ public class MiddlePen extends AbstractPen {
         color.coloring();
         // xxx
     }
-
 }

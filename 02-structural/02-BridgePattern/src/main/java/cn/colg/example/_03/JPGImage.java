@@ -15,5 +15,4 @@ public class JPGImage extends AbstractImage {
                                     .setFileName(fileName);
         imageImp.doPaint(matrix);
     }
-
 }

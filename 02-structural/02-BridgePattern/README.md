@@ -183,10 +183,10 @@
    *
    * @author colg
    */
-  @Setter
   public abstract class AbstractFile {
   
-      /** 定义实现类接口对象 */
+      /** 定义实现类接口对象；设值注入 */
+      @Setter
       protected Db db;
   
       /**
@@ -285,6 +285,6 @@
 
 - 编译运行
 
-  ```ini
-  2018-12-06 01:02:47.338 - INFO [           main] cn.colg.learn._01.MySqlDb                : MySql数据库数据转换 : Data(dbType=MySql, schema=桥接模式, extName=.xml)
+  ```java
+  2018-12-08 20:39:05.683 - INFO [           main] cn.colg.learn._01.MySqlDb                : MySql数据库数据转换 : Data(dbType=MySql, schema=桥接模式, extName=.xml)
   ```

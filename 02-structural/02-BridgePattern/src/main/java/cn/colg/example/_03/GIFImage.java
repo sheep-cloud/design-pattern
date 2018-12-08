@@ -6,7 +6,7 @@ package cn.colg.example._03;
  * @author colg
  */
 public class GIFImage extends AbstractImage {
-
+    
     @Override
     public void parseFile(String fileName) {
         // 模拟解析GIF文件并获得一个像素矩阵对象
@@ -15,5 +15,4 @@ public class GIFImage extends AbstractImage {
                                     .setFileName(fileName);
         imageImp.doPaint(matrix);
     }
-
 }
