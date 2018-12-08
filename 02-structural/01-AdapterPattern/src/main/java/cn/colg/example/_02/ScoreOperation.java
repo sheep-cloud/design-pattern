@@ -24,5 +24,5 @@ public interface ScoreOperation {
      * @return
      * @author colg
      */
-    int search(int array[], int key);
+    boolean search(int array[], int key);
 }

@@ -3,20 +3,20 @@ package cn.colg.learn._01;
 import lombok.extern.slf4j.Slf4j;
 
 /**
- * 适配器类 - 数据库操作
+ * 适配器类 - 数据库操作1
  *
  * @author colg
  */
 @Slf4j
 public class DbOperation01Adapter implements DbOperation {
+    
+    /** 定义适配者类对象 */
+    private Crypoto crypoto = new Crypoto();
 
     @Override
-    public void add(String data) {}
-
-    @Override
-    public String select(String data) {
-        // 调用适配者类Crypoto加密方法md5
-        log.info("md5 算法加密");
-        return new Crypoto().md5(data);
+    public void add(String data) {
+        log.info("添加的数据 : {}", data);
+        data = crypoto.md5(data);
+        log.info("加密后的数据 ： {}", data);
     }
 }

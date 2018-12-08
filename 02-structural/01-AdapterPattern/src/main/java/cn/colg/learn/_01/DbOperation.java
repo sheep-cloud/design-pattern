@@ -14,13 +14,4 @@ public interface DbOperation {
      * @author colg
      */
     void add(String data);
-
-    /**
-     * 查询数据
-     *
-     * @param data
-     * @return
-     * @author colg
-     */
-    String select(String data);
 }

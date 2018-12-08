@@ -65,137 +65,59 @@
 - 目标抽象/接口/类
 
   ```java
-  package cn.colg.example._02;
+  package cn.colg.learn._01;
   
   /**
-   * 目标接口 - 抽象成绩操作类
+   * 目标接口 - 数据库操作
    *
    * @author colg
    */
-  public interface ScoreOperation {
+  public interface DbOperation {
   
       /**
-       * 成绩排序
+       * 添加数据
        *
-       * @param array
-       * @return
+       * @param data
        * @author colg
        */
-      int[] sort(int array[]);
-  
-      /**
-       * 成绩查找
-       *
-       * @param array
-       * @param key
-       * @return
-       * @author colg
-       */
-      int search(int array[], int key);
+      void add(String data);
   }
   ```
 
 - 适配者类
 
   ```java
-  package cn.colg.example._02;
+  package cn.colg.learn._01;
   
-  import java.util.Arrays;
+  import cn.hutool.crypto.SecureUtil;
   
   /**
-   * 适配者类 - 快速排序类
+   * 适配者类 - 加密（第三方系统）
    *
    * @author colg
    */
-  public class QuickSort {
+  public class Crypoto {
   
       /**
-       * 快速排序
+       * MD5加密，生成16进制MD5字符串
        *
-       * @param array
-       * @return
+       * @param data 数据
+       * @return MD5字符串
        * @author colg
        */
-      public int[] quickSort(int array[]) {
-          Arrays.sort(array);
-          return array;
-      }
-  }
-  ```
-
-  ```java
-  package cn.colg.example._02;
-  
-  import cn.hutool.core.util.ArrayUtil;
-  
-  /**
-   * 适配者类 - 冒泡排序类
-   *
-   * @author colg
-   */
-  public class BubbleSort {
-  
-      /**
-       * 冒泡排序
-       *
-       * @param array
-       * @return
-       * @author colg
-       */
-      public int[] bubbleSort(int array[]) {
-          for (int i = 0, len = array.length - 1; i < len; i++) {
-              for (int j = 0; j < len - i; j++) {
-                  if (array[j] > array[j + 1]) {
-                      ArrayUtil.swap(array, j, j + 1);
-                  }
-              }
-          }
-          return array;
+      public String md5(String data) {
+          return SecureUtil.md5(data);
       }
   
-  }
-  ```
-
-  ```java
-  package cn.colg.example._02;
-  
-  /**
-   * 适配者类 - 二分查找类
-   *
-   * @author colg
-   */
-  public class BinarySearch {
-  
       /**
-       * 二分查找法
+       * SHA1加密，生成16进制SHA1字符串
        *
-       * @param array
-       * @param key
-       * @return
+       * @param data 数据
+       * @return SHA1字符串
        * @author colg
        */
-      public int binarySearch(int array[], int key) {
-          int low = 0;
-          int high = array.length - 1;
-  
-          while (low <= high) {
-              int mid = (low + high) / 2;
-              int midVal = array[mid];
-  
-              if (midVal < key) {
-                  low = mid + 1;
-              } else if (midVal > key) {
-                  high = mid - 1;
-              } else {
-                  // 找到元素返回1
-                  return 1;
-              }
-          }
-  
-          // 未找到元素返回-1
-          return -1;
-  
-          // return Arrays.binarySearch(array, key);
+      public String sha1(String data) {
+          return SecureUtil.sha1(data);
       }
   }
   ```
@@ -203,67 +125,52 @@
 - 适配器类
 
   ```java
-  package cn.colg.example._02;
+  package cn.colg.learn._01;
   
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 适配器类 - 操作适配器
+   * 适配器类 - 数据库操作1
    *
    * @author colg
    */
   @Slf4j
-  public class Operation01Adapter implements ScoreOperation {
-  
-      public Operation01Adapter() {
-          log.info("创建操作适配器01");
-      }
-  
-      @Override
-      public int[] sort(int[] array) {
-          // 调用适配器者QuickSort的排序方法
-          return new QuickSort().quickSort(array);
-      }
+  public class DbOperation01Adapter implements DbOperation {
+      
+      /** 定义适配者类对象 */
+      private Crypoto crypoto = new Crypoto();
   
       @Override
-      public int search(int[] array, int key) {
-          // 调用适配者类BinarySearch的二分查找方法
-          return new BinarySearch().binarySearch(array, key);
+      public void add(String data) {
+          log.info("添加的数据 : {}", data);
+          data = crypoto.md5(data);
+          log.info("加密后的数据 ： {}", data);
       }
   }
   ```
 
   ```java
-  package cn.colg.example._02;
+  package cn.colg.learn._01;
   
-  import cn.hutool.core.util.ArrayUtil;
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 适配器类 - 操作适配器02
+   * 适配器类 - 数据库操作2
    *
    * @author colg
    */
   @Slf4j
-  public class Operation02Adapter implements ScoreOperation {
+  public class DbOperation02Adapter implements DbOperation {
   
-      public Operation02Adapter() {
-          log.info("创建操作适配器02");
-      }
-  
-      @Override
-      public int[] sort(int[] array) {
-          // 调用适配者类BubbleSort的冒牌排序方法
-          return new BubbleSort().bubbleSort(array);
-      }
+      /** 定义适配者类对象 */
+      private Crypoto crypoto = new Crypoto();
   
       @Override
-      public int search(int[] array, int key) {
-          // 调用适配者类 ArrayUtil的查找方法
-          boolean exists = ArrayUtil.contains(array, key);
-          return exists ? 1 : -1;
+      public void add(String data) {
+          log.info("添加的数据 : {}", data);
+          data = crypoto.sha1(data);
+          log.info("加密后的数据 ： {}", data);
       }
-  
   }
   ```
 
@@ -271,42 +178,32 @@
 
   ```ini
   # 全类名
-  example._02=cn.colg.example._02.Operation01Adapter
+  learn._01=cn.colg.learn._01.DbOperation01Adapter
   ```
 
 - 客户端
 
   ```java
-  package cn.colg.example._02;
+  package cn.colg.learn._01;
   
   import cn.colg.util.IniUtil;
-  import lombok.extern.slf4j.Slf4j;
   
   /**
    * 客户端
    *
    * @author colg
    */
-  @Slf4j
   public class Client {
       public static void main(String[] args) {
-          ScoreOperation operation = (ScoreOperation)IniUtil.getBean("example._02");
-  
-          // 定义成绩数组
-          int scores[] = {84, 76, 50, 69, 90, 91, 88, 96};
-  
-          log.info("成绩排序结果 : {}", operation.sort(scores));
-          log.info("查找成绩90 : {}", operation.search(scores, 90));
-          log.info("查找成绩92 : {}", operation.search(scores, 92));
+          DbOperation dbOperation = (DbOperation)IniUtil.getBean("learn._01");
+          dbOperation.add("Colg");
       }
   }
   ```
 
 - 编译运行
 
-  ```ini
-  2018-12-05 22:23:55.601 - INFO [           main] cn.colg.example._02.Operation01Adapter   : 创建操作适配器01
-  2018-12-05 22:23:55.602 - INFO [           main] cn.colg.example._02.Client               : 成绩排序结果 : [50, 69, 76, 84, 88, 90, 91, 96]
-  2018-12-05 22:23:55.604 - INFO [           main] cn.colg.example._02.Client               : 查找成绩90 : 1
-  2018-12-05 22:23:55.605 - INFO [           main] cn.colg.example._02.Client               : 查找成绩92 : -1
+  ```java
+  2018-12-08 19:45:55.953 - INFO [           main] cn.colg.learn._01.DbOperation01Adapter   : 添加的数据 : Colg
+  2018-12-08 19:45:55.964 - INFO [           main] cn.colg.learn._01.DbOperation01Adapter   : 加密后的数据 ： 48f98ed8ed88574b2838c7e2510cbe84
   ```

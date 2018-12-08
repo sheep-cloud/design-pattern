@@ -10,19 +10,22 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Operation01Adapter implements ScoreOperation {
 
-    public Operation01Adapter() {
-        log.info("创建操作适配器01");
-    }
+    /** 定义适配者QuickSort对象 */
+    private QuickSort quickSort = new QuickSort();
+    /** 定义适配者BinarySearch对象 */
+    private BinarySearch binarySearch = new BinarySearch();
 
     @Override
     public int[] sort(int[] array) {
         // 调用适配器者QuickSort的排序方法
-        return new QuickSort().quickSort(array);
+        log.info("调用适配器者QuickSort的排序方法");
+        return quickSort.quickSort(array);
     }
 
     @Override
-    public int search(int[] array, int key) {
+    public boolean search(int[] array, int key) {
         // 调用适配者类BinarySearch的二分查找方法
-        return new BinarySearch().binarySearch(array, key);
+        log.info("调用适配者类BinarySearch的二分查找方法");
+        return binarySearch.binarySearch(array, key);
     }
 }
