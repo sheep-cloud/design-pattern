@@ -239,7 +239,7 @@
   2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : customer2 : Customer(name=null, address=Address(country=chian))
   2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : 浅克隆 : customer1 == customer2 : false
   2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : 浅克隆 : customer1.getAddress() == customer2.getAddress() : true
-  2018-12-08 18:53:27.419 - INFO [           main] cn.colg.learn._01.Client                 : ----------------------------------------------------------------------------------------------------
+  2018-12-08 18:53:27.419 - INFO [           main] cn.colg.learn._01.Client                 : -----------------------------------------------------------------------------------
   2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : customer3 : Customer(name=null, address=Address(country=english))
   2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : customer4 : Customer(name=null, address=Address(country=english))
   2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : 深克隆 : customer3 == customer4 : false
