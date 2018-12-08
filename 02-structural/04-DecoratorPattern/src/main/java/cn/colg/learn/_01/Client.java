@@ -30,6 +30,6 @@ public class Client {
 
         // 四次加密
         AbstractComponent sha1 = new Sha1(md5);
-        log.info("四次加密（md5） : {}", sha1.crypoto(data));
+        log.info("四次加密（sha1） : {}", sha1.crypoto(data));
     }
 }

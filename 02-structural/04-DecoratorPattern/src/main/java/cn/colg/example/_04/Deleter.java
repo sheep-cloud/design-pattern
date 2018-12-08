@@ -12,7 +12,12 @@ public class Deleter extends AbstractComponentDecorator {
 
     public Deleter(AbstractComponent abstractComponent) {
         super(abstractComponent);
-        log.info("增加删除功能");
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        this.delete();
     }
 
     public void delete() {

@@ -18,7 +18,7 @@ public class Reverse extends AbstractComponentDecorator {
     @Override
     public String crypoto(String data) {
         String result = super.crypoto(data);
-        log.info("对字符串进行逆向加密");
+        log.info("对字符串进行逆向加密 : {}", result);
         return StrUtil.reverse(result);
     }
 }

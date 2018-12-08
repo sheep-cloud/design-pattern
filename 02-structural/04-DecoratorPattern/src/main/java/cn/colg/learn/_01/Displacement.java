@@ -19,7 +19,7 @@ public class Displacement extends AbstractComponent {
      */
     @Override
     public String crypoto(String data) {
-        log.info("对字符串进行位移加密");
+        log.info("对字符串进行位移加密 : {}", data);
         return this.displacement(data, 3, true);
     }
 

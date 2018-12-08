@@ -9,14 +9,9 @@ import org.slf4j.Logger;
  */
 public abstract class AbstractLoggerDecorator extends AbstractLoggerAdapter {
 
-    /** 维持Logger类型成员的引用 */
+    /** 维持Logger类型成员的引用；构造注入 */
     private Logger logger;
 
-    /**
-     * 注入Logger类型对象
-     *
-     * @param logger
-     */
     public AbstractLoggerDecorator(Logger logger) {
         this.logger = logger;
     }

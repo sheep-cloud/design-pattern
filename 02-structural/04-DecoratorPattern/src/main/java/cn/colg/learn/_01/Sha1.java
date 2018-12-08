@@ -18,7 +18,7 @@ public class Sha1 extends AbstractComponentDecorator {
     @Override
     public String crypoto(String data) {
         String result = super.crypoto(data);
-        log.info("对字符串进行SHA1加密");
+        log.info("对字符串进行SHA1加密 : {}", result);
         return SecureUtil.sha1(result);
     }
 }

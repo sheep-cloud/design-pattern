@@ -7,18 +7,13 @@ package cn.colg.learn._01;
  */
 public abstract class AbstractComponentDecorator extends AbstractComponent {
 
-    /** 维持对抽象构件类型成员的引用 */
+    /** 维持对抽象构件类型成员的引用；构造注入 */
     private AbstractComponent abstractComponent;
 
-    /**
-     * 注入抽象构件对象
-     *
-     * @param abstractComponent
-     */
     public AbstractComponentDecorator(AbstractComponent abstractComponent) {
         this.abstractComponent = abstractComponent;
     }
-    
+
     @Override
     public String crypoto(String data) {
         return abstractComponent.crypoto(data);

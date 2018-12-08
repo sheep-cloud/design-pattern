@@ -7,14 +7,9 @@ package cn.colg.example._03;
  */
 public abstract class AbstractComponentDecorator extends AbstractComponent {
 
-    /** 维持对抽象构件类型对象的引用 */
+    /** 维持对抽象构件类型对象的引用；构造注入 */
     private AbstractComponent abstractComponent;
 
-    /**
-     * 注入抽象构件类型的对象
-     *
-     * @param abstractComponent
-     */
     public AbstractComponentDecorator(AbstractComponent abstractComponent) {
         this.abstractComponent = abstractComponent;
     }
@@ -23,5 +18,4 @@ public abstract class AbstractComponentDecorator extends AbstractComponent {
     public void display() {
         abstractComponent.display();
     }
-
 }

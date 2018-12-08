@@ -12,7 +12,12 @@ public class Approver extends AbstractComponentDecorator {
 
     public Approver(AbstractComponent abstractComponent) {
         super(abstractComponent);
-        log.info("增加审批功能！");
+    }
+
+    @Override
+    public void display() {
+        super.display();
+        this.approve();
     }
 
     public void approve() {

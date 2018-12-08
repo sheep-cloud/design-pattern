@@ -127,7 +127,7 @@
        */
       @Override
       public String crypoto(String data) {
-          log.info("对字符串进行位移加密");
+          log.info("对字符串进行位移加密 : {}", data);
           return this.displacement(data, 3, true);
       }
   
@@ -183,18 +183,13 @@
    */
   public abstract class AbstractComponentDecorator extends AbstractComponent {
   
-      /** 维持对抽象构件类型成员的引用 */
+      /** 维持对抽象构件类型成员的引用；构造注入 */
       private AbstractComponent abstractComponent;
   
-      /**
-       * 注入抽象构件对象
-       *
-       * @param abstractComponent
-       */
       public AbstractComponentDecorator(AbstractComponent abstractComponent) {
           this.abstractComponent = abstractComponent;
       }
-      
+  
       @Override
       public String crypoto(String data) {
           return abstractComponent.crypoto(data);
@@ -225,7 +220,7 @@
       @Override
       public String crypoto(String data) {
           String result = super.crypoto(data);
-          log.info("对字符串进行逆向加密");
+          log.info("对字符串进行逆向加密 : {}", result);
           return StrUtil.reverse(result);
       }
   }
@@ -252,7 +247,7 @@
       @Override
       public String crypoto(String data) {
           String result = super.crypoto(data);
-          log.info("对字符串进行MD5加密");
+          log.info("对字符串进行MD5加密 : {}", result);
           return SecureUtil.md5(result);
       }
   }
@@ -279,7 +274,7 @@
       @Override
       public String crypoto(String data) {
           String result = super.crypoto(data);
-          log.info("对字符串进行SHA1加密");
+          log.info("对字符串进行SHA1加密 : {}", result);
           return SecureUtil.sha1(result);
       }
   }
@@ -320,7 +315,7 @@
   
           // 四次加密
           AbstractComponent sha1 = new Sha1(md5);
-          log.info("四次加密（md5） : {}", sha1.crypoto(data));
+          log.info("四次加密（sha1） : {}", sha1.crypoto(data));
       }
   }
   ```
@@ -330,24 +325,21 @@
   ​	
 
   ```java
-  2018-12-06 14:15:20.662 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密
-  2018-12-06 14:15:20.668 - INFO [           main] cn.colg.learn._01.Client                 : 一次加密（位移） : efgabcd
-  2018-12-06 14:15:20.669 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
-  
-  2018-12-06 14:15:20.670 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密
-  2018-12-06 14:15:20.670 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密
-  2018-12-06 14:15:20.672 - INFO [           main] cn.colg.learn._01.Client                 : 二次加密（逆向） : dcbagfe
-  2018-12-06 14:15:20.673 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
-  
-  2018-12-06 14:15:20.673 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密
-  2018-12-06 14:15:20.673 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密
-  2018-12-06 14:15:20.673 - INFO [           main] cn.colg.learn._01.Md5                    : 对字符串进行MD5加密
-  2018-12-06 14:15:20.683 - INFO [           main] cn.colg.learn._01.Client                 : 三次加密（md5） : 1060301888f86ae3517603923d074537
-  2018-12-06 14:15:20.683 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
-  
-  2018-12-06 14:15:20.683 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密
-  2018-12-06 14:15:20.683 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密
-  2018-12-06 14:15:20.683 - INFO [           main] cn.colg.learn._01.Md5                    : 对字符串进行MD5加密
-  2018-12-06 14:15:20.684 - INFO [           main] cn.colg.learn._01.Sha1                   : 对字符串进行SHA1加密
-  2018-12-06 14:15:20.684 - INFO [           main] cn.colg.learn._01.Client                 : 四次加密（md5） : c2ffa105f688e5e5db6a1fe6340c4ed639841fef
+  2018-12-08 21:12:49.602 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密 : abcdefg
+  2018-12-08 21:12:49.609 - INFO [           main] cn.colg.learn._01.Client                 : 一次加密（位移） : efgabcd
+  2018-12-08 21:12:49.609 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
+  2018-12-08 21:12:49.610 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密 : abcdefg
+  2018-12-08 21:12:49.610 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密 : efgabcd
+  2018-12-08 21:12:49.613 - INFO [           main] cn.colg.learn._01.Client                 : 二次加密（逆向） : dcbagfe
+  2018-12-08 21:12:49.613 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
+  2018-12-08 21:12:49.613 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密 : abcdefg
+  2018-12-08 21:12:49.613 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密 : efgabcd
+  2018-12-08 21:12:49.613 - INFO [           main] cn.colg.learn._01.Md5                    : 对字符串进行MD5加密 : dcbagfe
+  2018-12-08 21:12:49.623 - INFO [           main] cn.colg.learn._01.Client                 : 三次加密（md5） : 1060301888f86ae3517603923d074537
+  2018-12-08 21:12:49.623 - INFO [           main] cn.colg.learn._01.Client                 : --------------------------------------------------------------------------------
+  2018-12-08 21:12:49.623 - INFO [           main] cn.colg.learn._01.Displacement           : 对字符串进行位移加密 : abcdefg
+  2018-12-08 21:12:49.623 - INFO [           main] cn.colg.learn._01.Reverse                : 对字符串进行逆向加密 : efgabcd
+  2018-12-08 21:12:49.623 - INFO [           main] cn.colg.learn._01.Md5                    : 对字符串进行MD5加密 : dcbagfe
+  2018-12-08 21:12:49.624 - INFO [           main] cn.colg.learn._01.Sha1                   : 对字符串进行SHA1加密 : 1060301888f86ae3517603923d074537
+  2018-12-08 21:12:49.624 - INFO [           main] cn.colg.learn._01.Client                 : 四次加密（sha1） : c2ffa105f688e5e5db6a1fe6340c4ed639841fef
   ```
