@@ -9,16 +9,15 @@ import lombok.experimental.Accessors;
  *
  * @author colg
  */
+@Getter
+@Setter
 @Accessors(chain = true)
 public abstract class AbstractApprover {
 
-    /** 定义后继对象；设置后继者 */
-    @Setter
+    /** 定义后继对象；设值注入 */
     protected AbstractApprover successor;
 
-    /** 审批者名称；设置审批者名称 */
-    @Getter
-    @Setter
+    /** 审批者名称；设值注入 */
     protected String name;
 
     /**

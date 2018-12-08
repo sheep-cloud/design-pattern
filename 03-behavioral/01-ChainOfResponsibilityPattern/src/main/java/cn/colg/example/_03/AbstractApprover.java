@@ -13,11 +13,11 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public abstract class AbstractApprover {
 
-    /** 定义后继对象；设置后继者 */
+    /** 定义后继对象；设值注入 */
     @Setter
     protected AbstractApprover successor;
 
-    /** 审批者名称 */
+    /** 审批者名称；构造注入 */
     protected String name;
 
     /**

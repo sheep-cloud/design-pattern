@@ -22,7 +22,5 @@ public class President extends AbstractApprover {
             // 转发请求
             this.successor.processRequest(request);
         }
-
     }
-
 }
