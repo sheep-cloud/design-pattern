@@ -238,6 +238,6 @@
 
 - 编译运行
 
-  ```ini
-  2018-12-05 17:42:48.567 - INFO [main] cn.colg.learn._02.Client                 : video : Video(menu=null, playList=null, mainWindow=主窗口, controlStrip=控制条, favoritesList=null)
+  ```java
+  2018-12-08 19:13:46.909 - INFO [           main] cn.colg.learn._01.Client                 : video : Video(menu=null, playList=null, mainWindow=主菜单, controlStrip=控制条, favoritesList=null)
   ```

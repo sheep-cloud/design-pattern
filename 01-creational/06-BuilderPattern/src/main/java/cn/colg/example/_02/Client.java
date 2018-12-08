@@ -15,9 +15,7 @@ public class Client {
         AbstractActorBuilder builder = (AbstractActorBuilder)IniUtil.getBean("example._02");
 
         ActorController actorController = new ActorController();
-        actorController.construct(builder);
-        
-        Actor actor = builder.createActor();
+        Actor actor = actorController.construct(builder);
         log.info("actor : {}", actor);
     }
 }

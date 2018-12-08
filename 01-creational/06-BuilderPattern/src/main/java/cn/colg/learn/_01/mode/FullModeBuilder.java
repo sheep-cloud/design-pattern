@@ -31,5 +31,4 @@ public class FullModeBuilder extends AbstractVideoBuilder {
 
     @Override
     public void buildFavoritesList() {}
-
 }

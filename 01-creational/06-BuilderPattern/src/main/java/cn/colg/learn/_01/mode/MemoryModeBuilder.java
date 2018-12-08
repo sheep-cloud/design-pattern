@@ -29,5 +29,4 @@ public class MemoryModeBuilder extends AbstractVideoBuilder {
     public void buildFavoritesList() {
         video.setControlStrip("收藏列表");
     }
-
 }

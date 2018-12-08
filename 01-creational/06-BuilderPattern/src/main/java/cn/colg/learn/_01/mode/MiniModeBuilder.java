@@ -27,5 +27,4 @@ public class MiniModeBuilder extends AbstractVideoBuilder{
 
     @Override
     public void buildFavoritesList() {}
-
 }
