@@ -9,9 +9,8 @@ import cn.colg.util.IniUtil;
  */
 public class Client {
     public static void main(String[] args) {
-        AbstractGeometryFactory geometry;
         String type = IniUtil.getStr("learn._01");
-        geometry = AbstractGeometryFactory.getGeometry(type);
+        AbstractGeometryFactory geometry = AbstractGeometryFactory.getGeometry(type);
         geometry.draw();
         geometry.erase();
     }

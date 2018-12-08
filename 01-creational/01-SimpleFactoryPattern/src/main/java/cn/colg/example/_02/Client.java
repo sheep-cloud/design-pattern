@@ -10,7 +10,7 @@ public class Client {
     public static void main(String[] args) {
         AbstractProduct product;
         // 通过工厂类创建产品对象
-        product = Factory.getProduct("A");
+        product = Factory.getProduct("");
         product.methodSame();
         product.methodDiff();
 
@@ -19,6 +19,10 @@ public class Client {
          * 
          *  如果需要更换产品，只需修改静态工厂方法中的参数即可
          */
+
+        product = Factory.getProduct("A");
+        product.methodSame();
+        product.methodDiff();
 
         product = Factory.getProduct("B");
         product.methodSame();

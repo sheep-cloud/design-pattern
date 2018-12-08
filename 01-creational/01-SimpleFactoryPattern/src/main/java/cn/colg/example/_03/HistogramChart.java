@@ -10,13 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class HistogramChart implements Chart {
 
-    public HistogramChart() {
-        log.info("创建柱状图");
-    }
-
     @Override
     public void display() {
         log.info("显示柱状图");
     }
-
 }

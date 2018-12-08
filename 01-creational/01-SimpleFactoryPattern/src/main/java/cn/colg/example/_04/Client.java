@@ -9,11 +9,9 @@ import cn.colg.util.IniUtil;
  * @author colg
  */
 public class Client {
-
     public static void main(String[] args) {
-        Chart chart;
         String type = IniUtil.getStr("example._04");
-        chart = AbstractChartFactory.getChart(type);
+        Chart chart = AbstractChartFactory.getChart(type);
         chart.display();
     }
 }

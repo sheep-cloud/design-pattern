@@ -10,10 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Triangle extends AbstractGeometryFactory {
 
-    public Triangle() {
-        log.info("创建三角形");
-    }
-
     @Override
     public void draw() {
         log.info("绘制三角形");

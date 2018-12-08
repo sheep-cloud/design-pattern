@@ -10,13 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class PieChart implements Chart {
 
-    public PieChart() {
-        log.info("创建饼状图");
-    }
-
     @Override
     public void display() {
         log.info("显示饼状图");
     }
-
 }

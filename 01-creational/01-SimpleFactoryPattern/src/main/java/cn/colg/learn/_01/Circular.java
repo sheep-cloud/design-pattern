@@ -10,10 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Circular extends AbstractGeometryFactory {
 
-    public Circular() {
-        log.info("创建圆形");
-    }
-
     @Override
     public void draw() {
         log.info("绘制圆形");

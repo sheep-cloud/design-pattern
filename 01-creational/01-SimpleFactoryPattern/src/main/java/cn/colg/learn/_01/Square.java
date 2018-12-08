@@ -10,10 +10,6 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Square extends AbstractGeometryFactory {
 
-    public Square() {
-        log.info("创建方形");
-    }
-
     @Override
     public void draw() {
         log.info("绘制方形");

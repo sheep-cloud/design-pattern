@@ -12,7 +12,6 @@ public class ConcreteProductA extends AbstractProduct {
 
     @Override
     public void methodDiff() {
-        log.info("具体产品角色A的业务方法");
+        log.info("具体产品 ConcreteProductA 的业务方法");
     }
-
 }

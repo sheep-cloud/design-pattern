@@ -20,7 +20,7 @@
      -  **工厂类可以被外界直接调用，创建所需的产品对象；**
      -  **在工厂类中提供了静态的工厂方法factoryMethod()，它的返回类型为抽象产品类型Product。**
 -  **Product（抽象产品角色）**
-       - **它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法，它的引入将提高系统的灵活性，使得在工厂类中只需定义一个通用的工厂方法，因为所有创建的具体产品对象都是其子类对象。**
+   ​    - **它是工厂类所创建的所有对象的父类，封装了各种产品对象的公有方法，它的引入将提高系统的灵活性，使得在工厂类中只需定义一个通用的工厂方法，因为所有创建的具体产品对象都是其子类对象。**
 -  **ConcreteProduct（具体产品角色）**
      -  **它是简单工厂模式的创建目标，所有被创建的对象都充当这个角色的某个具体类的实例。每一个具体产品角色都继承了抽象产品角色，需要实现在抽象产品中声明的抽象方法。**
 
@@ -135,10 +135,6 @@
   @Slf4j
   public class Circular extends AbstractGeometryFactory {
   
-      public Circular() {
-          log.info("创建圆形");
-      }
-  
       @Override
       public void draw() {
           log.info("绘制圆形");
@@ -164,10 +160,6 @@
   @Slf4j
   public class Square extends AbstractGeometryFactory {
   
-      public Square() {
-          log.info("创建方形");
-      }
-  
       @Override
       public void draw() {
           log.info("绘制方形");
@@ -192,10 +184,6 @@
    */
   @Slf4j
   public class Triangle extends AbstractGeometryFactory {
-  
-      public Triangle() {
-          log.info("创建三角形");
-      }
   
       @Override
       public void draw() {
@@ -261,9 +249,8 @@
    */
   public class Client {
       public static void main(String[] args) {
-          AbstractGeometryFactory geometry;
           String type = IniUtil.getStr("learn._01");
-          geometry = AbstractGeometryFactory.getGeometry(type);
+          AbstractGeometryFactory geometry = AbstractGeometryFactory.getGeometry(type);
           geometry.draw();
           geometry.erase();
       }
@@ -272,8 +259,7 @@
 
 - 编译运行
 
-  ```ini
-  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 创建三角形
-  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 绘制三角形
-  2018-12-04 23:11:08.302 - INFO [main] cn.colg.learn._01.Triangle  : 擦除三角形
+  ```java
+  2018-12-08 17:48:24.048 - INFO [           main] cn.colg.learn._01.Triangle               : 绘制三角形
+  2018-12-08 17:48:24.048 - INFO [           main] cn.colg.learn._01.Triangle               : 擦除三角形
   ```
