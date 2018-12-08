@@ -9,7 +9,7 @@ import lombok.extern.slf4j.Slf4j;
  */
 @Slf4j
 public class DesktopFacade extends AbstractComputerFacade {
-    
+
     /** 维持对子系统对象的引用 */
     private Cpu cpu = new Cpu();
     private Disk disk = new Disk();
@@ -30,5 +30,4 @@ public class DesktopFacade extends AbstractComputerFacade {
         disk.shutDown();
         cpu.shutDown();
     }
-
 }

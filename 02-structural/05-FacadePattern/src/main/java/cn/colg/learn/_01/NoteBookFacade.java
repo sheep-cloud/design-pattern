@@ -27,5 +27,4 @@ public class NoteBookFacade extends AbstractComputerFacade {
         disk.shutDown();
         cpu.shutDown();
     }
-
 }

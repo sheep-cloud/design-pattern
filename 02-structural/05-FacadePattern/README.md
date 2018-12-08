@@ -65,94 +65,121 @@
 
   ```java
   /**
-   * 外观模式（三）
+   * 外观模式
    * 
    * <pre>
-   * 某软件公司欲开发一个可应用于多个软件的文件加密模块，该模块可以对文件中的数据进行加密并将加密之后的数据存储在一个新文件中，
-   * 具体的流程包括三个部分，分别是读取源文件、加密、保存加密之后的文件，
-   * 其中，读取文件和保存文件使用流来实现，加密操作通过求模运算实现。
-   * 这三个操作相对独立，为了实现代码的独立重用，让设计更符合单一职责原则，这三个操作的业务代码封装在三个不同的类中。
+   * 电脑整机是 CPU、硬盘、光驱的外观。
+   * 有了外观以后，启动电脑和关闭电脑都简化了。 
+   * 直接 new 一个电脑。 
+   * 在 new 电脑的同时把 cpu、硬盘、光驱都初始化好并且接好线。 
+   * 对外暴露方法（启动电脑，关闭电脑） 
+   * 启动电脑（按一下电源键）：启动CPU、启动硬盘 、启动光驱
+   * 关闭电脑（按一下电源键）：关闭光驱、关闭硬盘、关闭CPU
    * 
-   * 现使用外观模式设计该文件加密模块。
-   * 
-   * 引入抽象外观类之后，客户端可以针对抽象外观类进行编程，对于新的业务需求，不需要修改原有外观类，
-   * 而对应增加一个新的具体外观类，由新的具体外观类来关联新的子系统对象，同时通过修改配置文件来达到不修改任何源代码并更换外观类的目的。
+   * 台式机开关机 ---> 光驱启动关闭
+   * 笔记本开关机 ---> 无光驱
    * </pre>
    *
    * @author colg
    */
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   ```
 
 - 抽象外观角色
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   
   /**
-   * 外观角色 - 加密外观抽象类
+   * 抽象外观角色 - 电脑
    *
    * @author colg
    */
-  public abstract class AbstractEncryptFacade {
+  public abstract class AbstractComputerFacade {
   
       /**
-       * 读取文件，加密后写入新的文件
+       * 开机
        *
-       * @param pathSrc 读取文件路径
-       * @param pathDes 写入文件路径
        * @author colg
        */
-      public abstract void fileEncrypt(String pathSrc, String pathDes);
+      public abstract void start();
+  
+      /**
+       * 关机
+       *
+       * @author colg
+       */
+      public abstract void shutDown();
   }
   ```
 
 - 外观角色
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
+  
+  import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 外观角色 - 加密外观类
+   * 外观角色 - 台式机
    *
    * @author colg
    */
-  public class EncryptFacade extends AbstractEncryptFacade {
+  @Slf4j
+  public class DesktopFacade extends AbstractComputerFacade {
   
       /** 维持对子系统对象的引用 */
-      private FileReader reader = new FileReader();
-      private CipherMachine machine = new CipherMachine();
-      private FileWriter writer = new FileWriter();
+      private Cpu cpu = new Cpu();
+      private Disk disk = new Disk();
+      private Drive drive = new Drive();
   
       @Override
-      public void fileEncrypt(String pathSrc, String pathDes) {
-          String plainText = reader.read(pathSrc);
-          String encryptStr = machine.encrypt(plainText);
-          writer.write(encryptStr, pathDes);
+      public void start() {
+          log.info("开启台式机");
+          cpu.start();
+          disk.start();
+          drive.start();
+      }
+  
+      @Override
+      public void shutDown() {
+          log.info("关闭台式机");
+          drive.shutDown();
+          disk.shutDown();
+          cpu.shutDown();
       }
   }
   ```
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
+  
+  import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 外观角色 - 加密外观类
+   * 外观角色 - 笔记本
    *
    * @author colg
    */
-  public class NewEncryptFacade extends AbstractEncryptFacade {
+  @Slf4j
+  public class NoteBookFacade extends AbstractComputerFacade {
   
       /** 维持对子系统对象的引用 */
-      private FileReader reader = new FileReader();
-      private NewCipherMachine machine = new NewCipherMachine();
-      private FileWriter writer = new FileWriter();
+      private Cpu cpu = new Cpu();
+      private Disk disk = new Disk();
   
       @Override
-      public void fileEncrypt(String pathSrc, String pathDes) {
-          String plainText = reader.read(pathSrc);
-          String encryptStr = machine.encrypt(plainText);
-          writer.write(encryptStr, pathDes);
+      public void start() {
+          log.info("开启笔记本");
+          cpu.start();
+          disk.start();
+      }
+  
+      @Override
+      public void shutDown() {
+          log.info("关闭笔记本");
+          disk.shutDown();
+          cpu.shutDown();
       }
   }
   ```
@@ -160,144 +187,70 @@
 - 子系统角色
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   
-  import cn.hutool.core.io.FileUtil;
-  import cn.hutool.core.util.CharsetUtil;
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 子系统角色 - 文件读取类
+   * 子系统角色 - CPU
    *
    * @author colg
    */
   @Slf4j
-  public class FileReader {
+  public class Cpu {
   
-      /**
-       * 读取文件内容
-       *
-       * @param path 文件路径
-       * @return
-       * @author colg
-       */
-      public String read(String path) {
-          String str = FileUtil.readString(path, CharsetUtil.UTF_8);
-          log.info("读取文件 : {}，获取明文: {}", path, str);
-          return str;
+      public void start() {
+          log.info("启动CPU");
+      }
+      
+      public void shutDown() {
+          log.info("关闭CPU");
       }
   }
   ```
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   
-  import cn.hutool.core.io.FileUtil;
-  import cn.hutool.core.util.CharsetUtil;
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 子系统角色 - 文件保存类
+   * 子系统角色 - 硬盘
    *
    * @author colg
    */
   @Slf4j
-  public class FileWriter {
+  public class Disk {
   
-      /**
-       * 将String写入文件，覆盖模式
-       *
-       * @param encryptStr 写入的内容
-       * @param path 文件路径
-       * @author colg
-       */
-      public void write(String encryptStr, String path) {
-          log.info("保存密文，写入文件 : {}", path);
-          FileUtil.writeString(encryptStr, path, CharsetUtil.UTF_8);
+      public void start() {
+          log.info("启动硬盘");
+      }
+  
+      public void shutDown() {
+          log.info("关闭硬盘");
       }
   }
   ```
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   
   import lombok.extern.slf4j.Slf4j;
   
   /**
-   * 子系统角色 - 文件加密类
+   * 子系统角色 - 光驱
    *
    * @author colg
    */
   @Slf4j
-  public class CipherMachine {
+  public class Drive {
   
-      /**
-       * 对字符串进行求模加密
-       *
-       * @param plainText 字符串
-       * @return 加密后的字符串
-       * @author colg
-       */
-      public String encrypt(String plainText) {
-          char[] cs = plainText.toCharArray();
-          StringBuilder sb = new StringBuilder(cs.length);
-          for (char ch : cs) {
-              int c = ch % 7;
-              sb.append(c);
-          }
-          String result = sb.toString();
-          log.info("数据加密，将明文转换为密文 : {}", result);
-          return result;
+      public void start() {
+          log.info("光驱启动");
       }
-  }
-  ```
-
-  ```java
-  package cn.colg.example._03;
-  
-  import lombok.extern.slf4j.Slf4j;
-  
-  /**
-   * 子系统角色 - 新的文件加密类
-   *
-   * @author colg
-   */
-  @Slf4j
-  public class NewCipherMachine {
-  
-      /**
-       * 对字符串进行位移加密
-       *
-       * @param plainText 字符串
-       * @return 加密后的字符串
-       * @author colg
-       */
-      public String encrypt(String plainText) {
-          char[] cs = plainText.toCharArray();
-          StringBuilder sb = new StringBuilder(cs.length);
-          // 设置密钥，移位数为10
-          int key = 10;
-          for (char ch : cs) {
-              int temp = Character.digit(ch, 32);
-              // 小写字母移位
-              if (ch >= 'a' && ch <= 'z') {
-                  temp += key % 26;
-                  if (temp > 122) temp -= 26;
-                  if (temp < 97) temp += 26;
-              }
-  
-              // 大写字母移位
-              if (ch >= 'A' && ch <= 'Z') {
-                  temp += key % 26;
-                  if (temp > 90) temp -= 26;
-                  if (temp < 65) temp += 26;
-              }
-  
-              sb.append((char)temp);
-          }
-          String result = sb.toString();
-          log.info("数据加密，将明文转换为密文 : {}", result);
-          return result;
+      
+      public void shutDown() {
+          log.info("关闭光驱");
       }
   }
   ```
@@ -305,26 +258,30 @@
 - 配置文件`config.ini`
 
   ```ini
-  example._03=cn.colg.example._03.EncryptFacade
+  learn._01=cn.colg.learn._01.NoteBookFacade
   ```
 
 - 客户端
 
   ```java
-  package cn.colg.example._03;
+  package cn.colg.learn._01;
   
   import cn.colg.util.IniUtil;
+  import lombok.extern.slf4j.Slf4j;
   
   /**
    * 客户端
    *
    * @author colg
    */
+  @Slf4j
   public class Client {
       public static void main(String[] args) {
           // 针对抽象外观编程
-          AbstractEncryptFacade facade = (AbstractEncryptFacade)IniUtil.getBean("example._03");
-          facade.fileEncrypt("src.txt", "des.txt");
+          AbstractComputerFacade facade = (AbstractComputerFacade)IniUtil.getBean("learn._01");
+          facade.start();
+          log.info("-----------------------------------------------------------------");
+          facade.shutDown();
       }
   }
   ```
@@ -332,7 +289,11 @@
 - 编译运行
 
   ```java
-  2018-12-06 17:04:39.460 - INFO [           main] cn.colg.example._03.FileReader           : 读取文件 : src.txt，获取明文: Hello world!
-  2018-12-06 17:04:39.462 - INFO [           main] cn.colg.example._03.CipherMachine        : 数据加密，将明文转换为密文 : 233364062325
-  2018-12-06 17:04:39.462 - INFO [           main] cn.colg.example._03.FileWriter           : 保存密文，写入文件 : des.txt
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.NoteBookFacade         : 开启笔记本
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.Cpu                    : 启动CPU
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.Disk                   : 启动硬盘
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.Client                 : -----------------------------------------------------------------------------------
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.NoteBookFacade         : 关闭笔记本
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.Disk                   : 关闭硬盘
+  2018-12-08 21:21:31.760 - INFO [           main] cn.colg.learn._01.Cpu                    : 关闭CPU
   ```
