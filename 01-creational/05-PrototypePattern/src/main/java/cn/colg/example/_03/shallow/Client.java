@@ -20,6 +20,8 @@ public class Client {
 
         // 比较周报
         log.info("log1 == log2 : {}", log1 == log2);
+        log.info("log1 : {}", log1);
+        log.info("log2 : {}", log2);
 
         // 比较附件；比较附件对象的内存地址时输出true，说明它们在内存中是同一个对象
         log.info("log1.getAttachment() == log2.getAttachment() : {}", log1.getAttachment() == log2.getAttachment());

@@ -22,6 +22,8 @@ public class Client {
 
         // 比较周报
         log.info("log1 == log2 : {}", log1 == log2);
+        log.info("log1 : {}", log1);
+        log.info("log2 : {}", log2);
 
         // 比较附件；附件对象也得以复制，因此比较原型对象的附件和克隆对象的附件时输出结果均为false
         log.info("log1.getAttachment() == log2.getAttachment() : {}", log1.getAttachment() == log2.getAttachment());

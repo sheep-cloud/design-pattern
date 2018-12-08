@@ -15,16 +15,13 @@ public class Client {
         log1.setName("张无忌")
             .setDate("第12周")
             .setContent("周周工作很忙，每天加班！");
-        log.info("log1 : {}", log1);
 
         // 调用克隆方法创建克隆对象
         log2 = log1.shallowClone();
         log2.setDate("第13周");
-        log.info("log2 : {}", log2);
 
         log.info("log1 == log2 : {}", log1 == log2);
-        log.info("log1.getName() == log2.getName() : {}", log1.getName() == log2.getName());
-        log.info("log1.getDate() == log2.getDate() : {}", log1.getDate() == log2.getDate());
-        log.info("log1.getContent() == log2.getContent() : {}", log1.getContent() == log2.getContent());
+        log.info("log1 : {}", log1);
+        log.info("log2 : {}", log2);
     }
 }

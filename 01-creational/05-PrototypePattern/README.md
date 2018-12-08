@@ -157,7 +157,7 @@
       private Address address;
   
       /**
-       * 浅拷贝
+       * 浅克隆
        *
        * @return
        * @throws CloneNotSupportedException
@@ -169,7 +169,7 @@
       }
   
       /**
-       * 深拷贝
+       * 深克隆
        *
        * @return
        * @throws IOException
@@ -212,26 +212,36 @@
           customer1 = new Customer();
           customer1.setAddress(new Address("chian"));
           customer2 = customer1.shallowClone();
-          log.info("customer1 == customer2 : {}", customer1 == customer2);
+          log.info("customer1 : {}", customer1);
+          log.info("customer2 : {}", customer2);
+          log.info("浅克隆 : customer1 == customer2 : {}", customer1 == customer2);
           // true；浅克隆比较的是内存引用地址
-          log.info("customer1.getAddress() == customer2.getAddress() : {}", customer1.getAddress() == customer2.getAddress());
+          log.info("浅克隆 : customer1.getAddress() == customer2.getAddress() : {}", customer1.getAddress() == customer2.getAddress());
+          log.info("----------------------------------------------------------------------------------------------------");
   
           // 深克隆
           customer3 = new Customer();
           customer3.setAddress(new Address("english"));
           customer4 = customer3.deepClone();
-          log.info("customer3 == customer4 : {}", customer3 == customer4);
+          log.info("customer3 : {}", customer3);
+          log.info("customer4 : {}", customer4);
+          log.info("深克隆 : customer3 == customer4 : {}", customer3 == customer4);
           // false；深克隆比较的是地址值
-          log.info("customer3.getAddress() == customer4.getAddress() : {}", customer3.getAddress() == customer4.getAddress());
+          log.info("深克隆 : customer3.getAddress() == customer4.getAddress() : {}", customer3.getAddress() == customer4.getAddress());
       }
   }
   ```
 
 - 编译运行
 
-  ```ini
-  2018-12-05 11:36:12.182 - INFO [main] cn.colg.learn._01.Client                 : 浅克隆 : customer1 == customer2 : false
-  2018-12-05 11:36:12.188 - INFO [main] cn.colg.learn._01.Client                 : 浅克隆 : customer1.getAddress() == customer2.getAddress() : true
-  2018-12-05 11:36:12.197 - INFO [main] cn.colg.learn._01.Client                 : 深克隆 : customer3 == customer4 : false
-  2018-12-05 11:36:12.197 - INFO [main] cn.colg.learn._01.Client                 : 深克隆 : customer3.getAddress() == customer4.getAddress() : false
+  ```java
+  2018-12-08 18:53:27.414 - INFO [           main] cn.colg.learn._01.Client                 : customer1 : Customer(name=null, address=Address(country=chian))
+  2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : customer2 : Customer(name=null, address=Address(country=chian))
+  2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : 浅克隆 : customer1 == customer2 : false
+  2018-12-08 18:53:27.418 - INFO [           main] cn.colg.learn._01.Client                 : 浅克隆 : customer1.getAddress() == customer2.getAddress() : true
+  2018-12-08 18:53:27.419 - INFO [           main] cn.colg.learn._01.Client                 : ----------------------------------------------------------------------------------------------------
+  2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : customer3 : Customer(name=null, address=Address(country=english))
+  2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : customer4 : Customer(name=null, address=Address(country=english))
+  2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : 深克隆 : customer3 == customer4 : false
+  2018-12-08 18:53:27.428 - INFO [           main] cn.colg.learn._01.Client                 : 深克隆 : customer3.getAddress() == customer4.getAddress() : false
   ```

@@ -32,7 +32,7 @@ public class Customer implements Serializable, Cloneable {
     private Address address;
 
     /**
-     * 浅拷贝
+     * 浅克隆
      *
      * @return
      * @throws CloneNotSupportedException
@@ -44,7 +44,7 @@ public class Customer implements Serializable, Cloneable {
     }
 
     /**
-     * 深拷贝
+     * 深克隆
      *
      * @return
      * @throws IOException
