@@ -12,6 +12,15 @@
     <modules>
         <module>01-ChainOfResponsibilityPattern</module>
         <module>02-CommandPattern</module>
+        <module>03-InterpreterPattern</module>
+        <module>04-IteratorPattern</module>
+        <module>05-MediatorPattern</module>
+        <module>06-MementoPattern</module>
+        <module>07-ObserverPattern</module>
+        <module>08-StatePattern</module>
+        <module>09-StrategyPattern</module>
+        <module>10-TemplateMethodPattern</module>
+        <module>11-VisitorPattern</module>
     </modules>
 
 </project>
