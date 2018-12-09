@@ -11,4 +11,3 @@
  * @author colg
  */
 package cn.colg.example._01;
-// TODO colg [07-ObserverPattern 观察者模式]
