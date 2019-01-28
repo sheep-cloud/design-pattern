@@ -12,10 +12,10 @@ import lombok.extern.slf4j.Slf4j;
  * @author colg
  */
 @Slf4j
-public class ConcreteStrategy implements Strategy {
+public class ConcreteStrategyB implements Strategy {
 
     @Override
     public void algorithm() {
-        log.info("算法 ConcreteStrategy");
+        log.info("算法 ConcreteStrategyB");
     }
 }
